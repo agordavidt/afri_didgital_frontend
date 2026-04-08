@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact Us — AfriDigital</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Get in touch with the AfriDigital team. We're here to help with courses, support and partnerships.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="BDIC">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+
+
+</head>
+
+<body id="top">
+
+<!-- ── NAVIGATION ────────────────────────────────────────────── -->
+<nav id="mainNav" class="nav-page">
+  <div class="nav-wrap">
+    <div class="nav-bar">
+      <a href="index.html" class="n-logo">Afri<em>Digital</em></a>
+      <div class="n-center">
+        <a href="index.html" class="n-link">Home</a>
+        <span class="n-sep"></span>
+        <a href="courses.html" class="n-link catalogue">Catalogue</a>
+        <span class="n-sep"></span>
+        <a href="contact.html" class="n-link active">Talk to Us</a>
+      </div>
+      <div class="n-right">
+        <a href="login.html" class="n-signin">Sign In</a>
+        <a href="register.html" class="n-start">Get Started</a>
+      </div>
+      <button class="n-hamburger" id="navBurger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="n-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="courses.html" style="color:var(--p)">Catalogue</a>
+    <a href="contact.html">Talk to Us</a>
+    <a href="login.html">Sign In</a>
+    <a href="register.html" class="n-mobile-cta">Get Started Free</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1: HERO (dark, viewport-height)
+═══════════════════════════════════════════════════════════ -->
+<section class="page-title">
+  <div class="container text-center">
+    <!-- <span class="page-eyebrow">We respond within 24 hours</span> -->
+    <h1>Get in Touch</h1>
+    <p>Have a question, feedback or want to explore a partnership? Our team is ready to help you.</p>
+    <ul class="breadcrumb-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><i class="icofont-thin-right" style="font-size:0.65rem"></i></li>
+      <li class="active">Contact Us</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2: CONTACT FORM (locked to one viewport)
+═══════════════════════════════════════════════════════════ -->
+<section id="contact-form-vp">
+  <div class="container">
+
+    <div class="c-split">
+
+      <!-- LEFT: topic selector -->
+      <div class="cl">
+        <div class="cl-in">
+          <span class="cl-tag"><span class="dot"></span> Send us a message</span>
+          <h3>How Can We <em>Help?</em></h3>
+          <p class="cl-sub">Select a topic below so we can route your message to the right person and reply faster.</p>
+
+          <div class="cl-topics">
+            <div class="cl-topics-lbl">What's this about?</div>
+            <div class="cl-pills">
+              <span class="cl-pill active" data-topic="General">General</span>
+              <span class="cl-pill" data-topic="Course Support">Course Support</span>
+              <span class="cl-pill" data-topic="Technical Issue">Technical Issue</span>
+              <span class="cl-pill" data-topic="Feedback">Feedback</span>
+              <span class="cl-pill" data-topic="Partnership">Partnership</span>
+            </div>
+          </div>
+
+          <div class="cl-note">
+            <div class="cl-note-rule"></div>
+            <p class="cl-note-text">Developed by BDIC &nbsp;·&nbsp; AfriDigital &copy; 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: the form -->
+      <div class="cr">
+        <span class="cr-eye">Contact Form</span>
+        <h4>Send a Message</h4>
+        <p class="cr-desc">Fill in the form below and we'll get back to you promptly.</p>
+
+        <!-- Success banner -->
+        <div class="s-banner" id="successMsg">
+          <div class="sb-icon"><i class="icofont-check-circled"></i></div>
+          <div class="sb-text">
+            <strong>Message sent!</strong>
+            <span>We'll get back to you within 24 hours on business days.</span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="contactForm" novalidate>
+          <input type="hidden" id="selectedTopic" value="General">
+
+          <div class="row g-2">
+            <div class="col-sm-6" style="margin-bottom:2px">
+              <label class="cf-label" for="fullName">Full Name</label>
+              <input class="cf-input" type="text" id="fullName" required>
+              <span class="cf-err" id="nameErr"></span>
+            </div>
+            <div class="col-sm-6" style="margin-bottom:2px">
+              <label class="cf-label" for="contactEmail">Email Address</label>
+              <input class="cf-input" type="email" id="contactEmail" required>
+              <span class="cf-err" id="emailErr"></span>
+            </div>
+            <div class="col-12" style="margin-bottom:2px">
+              <label class="cf-label" for="contactSubject">Subject</label>
+              <input class="cf-input" type="text" id="contactSubject" required>
+              <span class="cf-err" id="subjectErr"></span>
+            </div>
+            <div class="col-12" style="margin-bottom:8px">
+              <label class="cf-label" for="contactMessage">Your Message</label>
+              <textarea class="cf-input" id="contactMessage" maxlength="1000" required></textarea>
+              <span class="cf-err" id="messageErr"></span>
+            </div>
+            <div class="col-12" style="margin-bottom:14px">
+              <div class="cf-consent">
+                <input type="checkbox" id="consentCheck" required>
+                <label for="consentCheck">
+                  I agree to AfriDigital's <a href="#">Privacy Policy</a> and consent to being contacted about my enquiry.
+                </label>
+              </div>
+              <span class="cf-err" id="consentErr"></span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 flex-wrap">
+            <button type="submit" class="btn-send">
+              <i class="icofont-paper-plane"></i> Send Message
+            </button>
+            <span style="font-size:.72rem;color:var(--tm)">
+              <i class="icofont-shield" style="color:var(--acc)"></i> We never share your info
+            </span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3: FAQ (dark, viewport-height)
+═══════════════════════════════════════════════════════════ -->
+<section class="vp" id="faq-vp">
+  <div class="container">
+
+    <div class="row g-5 align-items-start">
+
+      <div class="col-lg-4">
+        <span class="faq-eye">FAQs</span>
+        <h2 class="faq-h2">Common Questions</h2>
+        <p class="faq-sub">Quick answers to the questions we hear most. Still stuck? Use the form above.</p>
+      </div>
+
+      <div class="col-lg-8">
+
+        <div class="faq-item open">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">How do I access a course after enrolling?</span>
+            <span class="faq-icon"><i class="icofont-plus"></i></span>
+          </button>
+          <div class="faq-a open">
+            <div class="faq-a-inner">Once enrolled, log in and go to "My Learning" in your dashboard. All your courses are listed there and accessible on any device — mobile, tablet or desktop.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">Can I get a refund if I'm not satisfied?</span>
+            <span class="faq-icon"><i class="icofont-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes — we offer a 30-day money-back guarantee on all paid courses. Contact us within 30 days of purchase and we'll process a full refund, no questions asked.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">Are the certificates recognised by employers?</span>
+            <span class="faq-icon"><i class="icofont-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">AfriDigital certificates are developed with leading African and global companies. They're widely recognised across tech, business and creative industries and can be shared directly on LinkedIn.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">Does AfriDigital offer corporate or group training?</span>
+            <span class="faq-icon"><i class="icofont-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes — we offer tailored corporate training packages for organisations looking to upskill their teams. Select "Partnership" in the contact form and mention your team size; we'll arrange a consultation.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button">
+            <span class="faq-q-text">How long does it take to complete a course?</span>
+            <span class="faq-icon"><i class="icofont-plus"></i></span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">It depends on the course. Most learners complete short courses in 2–4 weeks and full bootcamps in 3–6 months at a self-paced rate. The estimated duration is always shown on the course page before you enrol.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="sf-logo">Afri<em>Digital</em></a>
+        <p class="sf-desc">Africa's premier digital learning platform, developed by BDIC. Unlocking potential through world-class education.</p>
+        <div class="sf-socials">
+          <a href="#"><i class="icofont-facebook"></i></a>
+          <a href="#"><i class="icofont-twitter"></i></a>
+          <a href="#"><i class="icofont-linkedin"></i></a>
+          <a href="#"><i class="icofont-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="sf-col-title">Platform</div>
+        <ul class="sf-links">
+          <li><a href="courses.html">All Courses</a></li>
+          <li><a href="course_single.html">Course Detail</a></li>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Sign In</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="sf-col-title">Company</div>
+        <ul class="sf-links">
+          <li><a href="#">About AfriDigital</a></li>
+          <li><a href="#">BDIC Partnership</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="sf-col-title">Support</div>
+        <ul class="sf-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Help Centre</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sf-bottom">
+      <div class="sf-copy">&copy; 2025 <strong>AfriDigital</strong> — Developed by <a href="#">BDIC</a>. All rights reserved.</div>
+      <a href="#top" class="backtop"><i class="icofont-long-arrow-up"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  /* ── Nav ─────────────────────────────────────── */
+  const nav    = document.getElementById('mainNav');
+  const burger = document.getElementById('navBurger');
+  const mobile = document.getElementById('navMobile');
+
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  burger.addEventListener('click', () => {
+    mobile.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) {
+      mobile.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
+
+  /* ── Topic pills ─────────────────────────────── */
+  const pills  = document.querySelectorAll('.cl-pill');
+  const topic  = document.getElementById('selectedTopic');
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      topic.value = pill.dataset.topic;
+      const subj = document.getElementById('contactSubject');
+      if (subj && !subj.value) subj.value = pill.dataset.topic;
+    });
+  });
+
+  /* ── Form validation ─────────────────────────── */
+  const form = document.getElementById('contactForm');
+
+  function setField(inputId, errId, isOk, msg) {
+    const el  = document.getElementById(inputId);
+    const err = document.getElementById(errId);
+    el.classList.toggle('ok',  isOk);
+    el.classList.toggle('err', !isOk);
+    if (err) err.textContent = isOk ? '' : msg;
+    return isOk;
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+
+    ok = setField('fullName',       'nameErr',    document.getElementById('fullName').value.trim().length >= 2,
+      'Please enter your full name.') && ok;
+    ok = setField('contactEmail',   'emailErr',   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('contactEmail').value.trim()),
+      'Please enter a valid email.') && ok;
+    ok = setField('contactSubject', 'subjectErr', document.getElementById('contactSubject').value.trim().length >= 2,
+      'Please enter a subject.') && ok;
+    ok = setField('contactMessage', 'messageErr', document.getElementById('contactMessage').value.trim().length >= 10,
+      'Please write at least 10 characters.') && ok;
+
+    const consent = document.getElementById('consentCheck');
+    const cErr    = document.getElementById('consentErr');
+    if (!consent.checked) {
+      ok = false;
+      if (cErr) cErr.textContent = 'You must agree to continue.';
+    } else {
+      if (cErr) cErr.textContent = '';
+    }
+
+    if (ok) {
+      form.style.display = 'none';
+      const banner = document.getElementById('successMsg');
+      banner.classList.add('show');
+    }
+  });
+
+  form.querySelectorAll('.cf-input').forEach(el => {
+    el.addEventListener('input', () => { el.classList.remove('err'); });
+  });
+
+  /* ── FAQ accordion ───────────────────────────── */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const wasOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').classList.remove('open');
+      });
+
+      if (!wasOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+      }
+    });
+  });
+
+  /* ── Back to top ─────────────────────────────── */
+  document.querySelector('.backtop')?.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
+

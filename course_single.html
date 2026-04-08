@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Full-Stack Web Development Bootcamp — AfriDigital</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Master full-stack web development with HTML, CSS, JavaScript, Node.js and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="BDIC">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* PAGE HERO — dark course header */
+    .course-hero {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+      padding: 60px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .course-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .breadcrumb-nav {
+      display: flex; align-items: center; gap: 8px;
+      list-style: none; padding: 0; margin: 0 0 20px;
+    }
+    .breadcrumb-nav li { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .breadcrumb-nav li a { color: rgba(255,255,255,0.65); text-decoration: none; transition: var(--transition); }
+    .breadcrumb-nav li a:hover { color: var(--primary); }
+    .breadcrumb-nav li.active { color: var(--primary); }
+
+    .course-tag {
+      display: inline-block;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--primary-light);
+      font-family: var(--font-display);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .course-hero h1 {
+      color: var(--white);
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .course-hero .lead-text {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem; line-height: 1.75;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+    .hero-meta {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 20px; margin-bottom: 24px;
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.65);
+    }
+    .hero-meta-item i { color: var(--primary); }
+    .hero-meta-item .stars { color: #F59E0B; font-size: 0.78rem; }
+    .hero-meta-item strong { color: var(--white); }
+
+    /* sticky enroll card at hero base on mobile */
+    .hero-tabs-bar {
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 40px;
+    }
+    .hero-tabs-bar .nav-link {
+      color: rgba(255,255,255,0.55);
+      font-family: var(--font-display);
+      font-size: 0.85rem; font-weight: 600;
+      padding: 16px 20px;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
+      transition: var(--transition);
+    }
+    .hero-tabs-bar .nav-link:hover,
+    .hero-tabs-bar .nav-link.active {
+      color: var(--white);
+      border-bottom-color: var(--primary);
+      background: transparent;
+    }
+
+    /* ====================================================
+       MAIN CONTENT LAYOUT
+    ==================================================== */
+    .course-body { padding: 60px 0 100px; background: var(--gray-soft); }
+
+    /* Left (main content) */
+    .course-content-wrap {}
+
+    /* Section blocks */
+    .content-block {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      margin-bottom: 24px;
+      border: 1px solid var(--gray-mid);
+    }
+    .content-block h3 {
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--dark); margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    /* What you'll learn */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .learn-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.88rem; color: var(--text-body); line-height: 1.55;
+    }
+    .learn-item i { color: var(--accent); font-size: 0.85rem; flex-shrink: 0; margin-top: 3px; }
+
+    /* Requirements */
+    .req-list { list-style: none; padding: 0; margin: 0; }
+    .req-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; color: var(--text-body);
+      padding: 8px 0; border-bottom: 1px solid var(--gray-mid);
+    }
+    .req-list li:last-child { border-bottom: none; }
+    .req-list li i { color: var(--text-muted); flex-shrink: 0; margin-top: 3px; }
+
+    /* Curriculum accordion */
+    .curriculum-summary {
+      font-size: 0.83rem; color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .curriculum-summary strong { color: var(--dark); }
+
+    .accordion-button {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dark);
+      background: var(--gray-soft);
+      padding: 14px 18px;
+      gap: 12px;
+    }
+    .accordion-button:not(.collapsed) {
+      background: rgba(249,115,22,0.06);
+      color: var(--primary);
+      box-shadow: none;
+    }
+    .accordion-button::after { margin-left: auto; }
+    .accordion-button:focus { box-shadow: none; }
+
+    .section-meta {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .lesson-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 18px;
+      border-bottom: 1px solid var(--gray-mid);
+      transition: var(--transition);
+    }
+    .lesson-item:last-child { border-bottom: none; }
+    .lesson-item:hover { background: rgba(249,115,22,0.04); }
+
+    .lesson-icon {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .lesson-icon.video { background: rgba(249,115,22,0.1); color: var(--primary); }
+    .lesson-icon.quiz  { background: rgba(16,185,129,0.1); color: var(--accent); }
+    .lesson-icon.code  { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+
+    .lesson-name {
+      font-size: 0.87rem; color: var(--dark); flex: 1;
+      line-height: 1.4;
+    }
+    .lesson-name .preview-tag {
+      font-size: 0.68rem; font-family: var(--font-display); font-weight: 600;
+      color: var(--primary); background: rgba(249,115,22,0.1);
+      padding: 2px 7px; border-radius: 10px; margin-left: 8px;
+    }
+    .lesson-duration {
+      font-size: 0.75rem; color: var(--text-muted);
+      font-family: var(--font-display); white-space: nowrap;
+    }
+
+    /* Instructor section */
+    .instructor-card-detail {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 10px 0;
+    }
+    .instructor-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--primary-light);
+      flex-shrink: 0;
+    }
+    .instructor-info h4 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 4px;
+    }
+    .instructor-info .role {
+      color: var(--primary); font-size: 0.82rem;
+      font-family: var(--font-display); font-weight: 600;
+    }
+    .instructor-stats {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      margin: 10px 0;
+    }
+    .instructor-stat {
+      font-size: 0.8rem; color: var(--text-muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .instructor-stat i { color: var(--primary); }
+    .instructor-bio {
+      font-size: 0.88rem; color: var(--text-body);
+      line-height: 1.75; margin-top: 6px;
+    }
+
+    /* Reviews */
+    .review-summary {
+      display: flex; gap: 32px; align-items: center;
+      padding: 24px; background: var(--gray-soft);
+      border-radius: var(--radius-md);
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .review-big-num {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 800;
+      color: var(--dark); line-height: 1;
+    }
+    .review-big-stars { color: #F59E0B; font-size: 1.3rem; margin: 4px 0; }
+    .review-total { font-size: 0.83rem; color: var(--text-muted); }
+
+    .rating-bars { flex: 1; min-width: 200px; }
+    .rating-bar-row {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 7px; font-size: 0.8rem;
+    }
+    .rating-bar-row .bar-track {
+      flex: 1; height: 7px; background: var(--gray-mid);
+      border-radius: 4px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; border-radius: 4px;
+      background: #F59E0B; transition: width 0.6s ease;
+    }
+    .bar-pct { color: var(--text-muted); width: 32px; text-align: right; }
+
+    .review-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .review-item:last-child { border-bottom: none; }
+    .reviewer-info {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .reviewer-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%; object-fit: cover;
+    }
+    .reviewer-name {
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.9rem; color: var(--dark);
+    }
+    .reviewer-meta {
+      font-size: 0.76rem; color: var(--text-muted); margin-top: 2px;
+    }
+    .review-stars { color: #F59E0B; font-size: 0.78rem; margin-left: auto; }
+    .review-text { font-size: 0.88rem; color: var(--text-body); line-height: 1.75; }
+
+    /* ====================================================
+       STICKY ENROLL CARD (sidebar)
+    ==================================================== */
+    .enroll-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--gray-mid);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      position: sticky;
+      top: 90px;
+    }
+    .enroll-card-preview {
+      position: relative;
+      height: 185px;
+      overflow: hidden;
+    }
+    .enroll-card-preview img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .preview-play-btn {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(15,23,42,0.45);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .preview-play-btn:hover { background: rgba(15,23,42,0.6); }
+    .preview-play-btn span {
+      width: 54px; height: 54px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1.4rem;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .preview-play-btn:hover span { transform: scale(1.12); }
+    .preview-play-btn p {
+      position: absolute; bottom: 12px;
+      color: var(--white); font-size: 0.8rem;
+      font-family: var(--font-display); font-weight: 600;
+      margin: 0; left: 50%; transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .enroll-card-body { padding: 24px; }
+
+    .price-wrap { margin-bottom: 18px; }
+    .price-main {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      color: var(--dark);
+    }
+    .price-original {
+      font-size: 0.95rem; color: var(--text-muted);
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+    .discount-badge {
+      display: inline-block;
+      background: rgba(249,115,22,0.12);
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 0.78rem;
+      padding: 3px 10px; border-radius: 20px;
+      margin-left: 8px;
+    }
+    .timer-strip {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.8rem; color: #EF4444;
+      font-family: var(--font-display); font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .btn-enroll-main {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 15px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1rem;
+      border: none; cursor: pointer;
+      transition: var(--transition);
+      display: block; text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+      margin-bottom: 12px;
+    }
+    .btn-enroll-main:hover {
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.45);
+    }
+
+    .btn-wishlist-card {
+      width: 100%;
+      padding: 13px;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--gray-mid);
+      background: var(--white);
+      color: var(--dark);
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex; align-items: center;
+      justify-content: center; gap: 8px;
+    }
+    .btn-wishlist-card:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .guarantee {
+      text-align: center;
+      font-size: 0.78rem; color: var(--text-muted);
+      margin: 14px 0;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+    }
+
+    .includes-list {
+      list-style: none; padding: 0; margin: 0;
+      border-top: 1px solid var(--gray-mid);
+      padding-top: 16px;
+    }
+    .includes-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: var(--text-body);
+      padding: 7px 0;
+    }
+    .includes-list li i { color: var(--primary); width: 16px; }
+
+    .share-row {
+      display: flex; gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-mid);
+      margin-top: 4px;
+    }
+    .share-btn {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1.5px solid var(--gray-mid);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      font-size: 1rem; cursor: pointer;
+      transition: var(--transition);
+    }
+    .share-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Related courses */
+    .related-card {
+      display: flex; gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-mid);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .related-card:last-child { border-bottom: none; }
+    .related-card:hover .related-title { color: var(--primary); }
+    .related-thumb {
+      width: 80px; height: 60px;
+      border-radius: 8px; overflow: hidden; flex-shrink: 0;
+    }
+    .related-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .related-info { flex: 1; }
+    .related-cat { font-size: 0.7rem; color: var(--primary); font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+    .related-title { font-size: 0.83rem; font-weight: 600; color: var(--dark); line-height: 1.4; margin: 3px 0; transition: var(--transition); }
+    .related-price { font-size: 0.82rem; font-weight: 700; color: var(--primary); font-family: var(--font-display); }
+
+    @media (max-width: 991px) {
+      .enroll-card { position: relative; top: 0; margin-bottom: 32px; }
+      .course-hero { padding-bottom: 30px; }
+    }
+    @media (max-width: 575px) {
+      .learn-grid { grid-template-columns: 1fr; }
+      .review-summary { flex-direction: column; gap: 16px; }
+      .instructor-card-detail { flex-direction: column; }
+    }
+  </style>
+
+
+
+
+
+</head>
+
+<body id="top">
+<nav id="mainNav" class="nav-page">
+  <div class="nav-wrap">
+    <div class="nav-bar">
+      <a href="index.html" class="n-logo">Afri<em>Digital</em></a>
+
+      <div class="n-center">
+        <a href="index.html" class="n-link">Home</a>
+        <span class="n-sep"></span>
+        <a href="courses.html" class="n-link catalogue active">Catalogue</a>
+        <span class="n-sep"></span>
+        <a href="contact.html" class="n-link">Talk to Us</a>
+      </div>
+
+      <div class="n-right">
+        <a href="login.html" class="n-signin">Sign In</a>
+        <a href="register.html" class="n-start">Get Started</a>
+      </div>
+
+      <button class="n-hamburger" id="navBurger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="n-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="courses.html" style="color:var(--primary)">Catalogue</a>
+    <a href="contact.html">Talk to Us</a>
+    <a href="login.html">Sign In</a>
+    <a href="register.html" class="n-mobile-cta">Get Started Free</a>
+  </div>
+</nav>
+
+
+
+
+
+<!-- ===== HEADER ===== -->
+
+
+
+<!-- ===== COURSE HERO ===== -->
+<section class="course-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <ul class="breadcrumb-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><i class="icofont-thin-right" style="font-size:0.65rem"></i></li>
+          <li><a href="courses.html">Courses</a></li>
+          <li><i class="icofont-thin-right" style="font-size:0.65rem"></i></li>
+          <li class="active">Full-Stack Web Development</li>
+        </ul>
+
+        <span class="course-tag">Software Development</span>
+        <h1>Full-Stack Web Development Bootcamp 2024</h1>
+        <p class="lead-text">
+          Master HTML, CSS, JavaScript, Node.js, React, databases and deployment. Build real-world projects and launch your dev career from anywhere in Africa.
+        </p>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="stars">★★★★★</span>
+            <strong>4.9</strong>
+            <span>(2,341 ratings)</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="icofont-users-alt-5"></i>
+            <span><strong>8,200+</strong> students enrolled</span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="icofont-calendar"></i>
+            <span>Last updated <strong>Nov 2024</strong></span>
+          </div>
+          <div class="hero-meta-item">
+            <i class="icofont-globe"></i>
+            <span>English · Yoruba · Pidgin subtitles</span>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-3 pb-3">
+          <a href="register.html" class="btn-main">Enroll Now — ₦19,999</a>
+          <span style="color:rgba(255,255,255,0.5);font-size:0.82rem">
+            <i class="icofont-shield" style="color:var(--accent)"></i> 30-day money-back guarantee
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-page tabs -->
+  <div class="hero-tabs-bar mt-4">
+    <div class="container">
+      <ul class="nav" id="courseTabs">
+        <li class="nav-item"><a class="nav-link active" href="#overview">Overview</a></li>
+        <li class="nav-item"><a class="nav-link" href="#curriculum">Curriculum</a></li>
+        <li class="nav-item"><a class="nav-link" href="#instructor">Instructor</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== COURSE BODY ===== -->
+<section class="course-body">
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- ====== LEFT: Main Content ====== -->
+      <div class="col-lg-8 course-content-wrap">
+
+        <!-- What You'll Learn -->
+        <div class="content-block" id="overview">
+          <h3>What You'll Learn</h3>
+          <div class="learn-grid">
+            <div class="learn-item"><i class="icofont-check-circled"></i> Build full-stack web apps from scratch</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> Master HTML5, CSS3 & responsive design</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> JavaScript ES6+ and modern frameworks</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> React.js — build interactive UIs</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> Node.js & Express backend development</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> MongoDB & SQL database design</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> REST APIs & authentication (JWT/OAuth)</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> Deploy apps to AWS, Vercel & Heroku</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> Git, GitHub & collaborative workflows</div>
+            <div class="learn-item"><i class="icofont-check-circled"></i> Build and ship a portfolio project</div>
+          </div>
+        </div>
+
+        <!-- About This Course -->
+        <div class="content-block">
+          <h3>About This Course</h3>
+          <p>This is the most comprehensive, modern full-stack web development course on AfriDigital. Designed with the African developer in mind, you'll go from absolute beginner to job-ready professional.</p>
+          <p>You'll build 15+ real-world projects including an e-commerce platform, a social media dashboard, and a fintech payment tool — all of which can go straight into your portfolio. By the end, you'll have the skills to work as a frontend developer, backend developer, or full-stack engineer at any company.</p>
+          <p>Our curriculum is updated every quarter to keep up with industry demands. You'll also get lifetime access to the AfriDigital community where 8,000+ fellow learners and mentors are active daily.</p>
+        </div>
+
+        <!-- Requirements -->
+        <div class="content-block">
+          <h3>Requirements</h3>
+          <ul class="req-list">
+            <li><i class="icofont-dot-circle"></i> A computer (Windows, macOS or Linux) with internet access</li>
+            <li><i class="icofont-dot-circle"></i> No prior programming experience required — we start from zero</li>
+            <li><i class="icofont-dot-circle"></i> Basic computer skills (typing, browsing)</li>
+            <li><i class="icofont-dot-circle"></i> Dedication to complete the projects and assignments</li>
+          </ul>
+        </div>
+
+        <!-- Curriculum -->
+        <div class="content-block" id="curriculum">
+          <h3>Course Curriculum</h3>
+          <p class="curriculum-summary">
+            <strong>187 lessons</strong> &nbsp;·&nbsp; <strong>42 total hours</strong> &nbsp;·&nbsp; <strong>15 sections</strong> &nbsp;·&nbsp; All levels
+          </p>
+
+          <div class="accordion" id="curriculumAccordion">
+
+            <!-- Section 1 -->
+            <div class="accordion-item border mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sec1">
+                  <span>Section 1: Introduction to Web Development</span>
+                  <span class="section-meta">10 lessons · 2h 15m</span>
+                </button>
+              </h2>
+              <div id="sec1" class="accordion-collapse collapse show" data-bs-parent="#curriculumAccordion">
+                <div class="accordion-body p-0">
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Welcome & Course Overview <span class="preview-tag">Preview</span></span>
+                    <span class="lesson-duration">05:12</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">How the Web Works <span class="preview-tag">Preview</span></span>
+                    <span class="lesson-duration">12:45</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Setting Up Your Development Environment</span>
+                    <span class="lesson-duration">18:20</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon quiz"><i class="icofont-question-circle"></i></div>
+                    <span class="lesson-name">Quiz: Web Development Fundamentals</span>
+                    <span class="lesson-duration">5 questions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="accordion-item border mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec2">
+                  <span>Section 2: HTML5 — Structure of the Web</span>
+                  <span class="section-meta">14 lessons · 3h 40m</span>
+                </button>
+              </h2>
+              <div id="sec2" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+                <div class="accordion-body p-0">
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">HTML Document Structure</span>
+                    <span class="lesson-duration">14:10</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Semantic HTML Elements</span>
+                    <span class="lesson-duration">20:35</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon code"><i class="icofont-code-alt"></i></div>
+                    <span class="lesson-name">Project: Build Your First Web Page</span>
+                    <span class="lesson-duration">Coding</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="accordion-item border mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec3">
+                  <span>Section 3: CSS3 & Responsive Design</span>
+                  <span class="section-meta">18 lessons · 4h 50m</span>
+                </button>
+              </h2>
+              <div id="sec3" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+                <div class="accordion-body p-0">
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">CSS Selectors & Box Model</span>
+                    <span class="lesson-duration">22:00</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Flexbox & CSS Grid</span>
+                    <span class="lesson-duration">38:20</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Media Queries & Mobile-First Design</span>
+                    <span class="lesson-duration">28:15</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="accordion-item border mb-2 rounded overflow-hidden">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sec4">
+                  <span>Section 4: JavaScript ES6+ Fundamentals</span>
+                  <span class="section-meta">22 lessons · 5h 30m</span>
+                </button>
+              </h2>
+              <div id="sec4" class="accordion-collapse collapse" data-bs-parent="#curriculumAccordion">
+                <div class="accordion-body p-0">
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Variables, Data Types & Operators</span>
+                    <span class="lesson-duration">18:45</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon video"><i class="icofont-play-alt-2"></i></div>
+                    <span class="lesson-name">Functions, Scope & Closures</span>
+                    <span class="lesson-duration">32:10</span>
+                  </div>
+                  <div class="lesson-item">
+                    <div class="lesson-icon code"><i class="icofont-code-alt"></i></div>
+                    <span class="lesson-name">Project: Interactive To-Do App</span>
+                    <span class="lesson-duration">Coding</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="text-center mt-3">
+            <button class="btn-load-more" style="padding:10px 28px;font-size:0.83rem">
+              Show All 15 Sections (187 lessons)
+            </button>
+          </div>
+        </div>
+
+        <!-- Instructor -->
+        <div class="content-block" id="instructor">
+          <h3>About the Instructor</h3>
+          <div class="instructor-card-detail">
+            <img src="images/team/test-thumb1.jpg" alt="Emeka Obi" class="instructor-avatar">
+            <div class="instructor-info">
+              <h4>Emeka Obi</h4>
+              <div class="role">Senior Full-Stack Developer & Lead Instructor</div>
+              <div class="instructor-stats">
+                <div class="instructor-stat"><i class="icofont-star"></i> 4.9 Rating</div>
+                <div class="instructor-stat"><i class="icofont-users-alt-5"></i> 24,500+ Students</div>
+                <div class="instructor-stat"><i class="icofont-book-alt"></i> 12 Courses</div>
+                <div class="instructor-stat"><i class="icofont-award"></i> 8 Years Experience</div>
+              </div>
+              <p class="instructor-bio">
+                Emeka is a Lagos-based senior full-stack developer with 8 years of professional experience building products for fintech, e-commerce, and SaaS companies across Africa and Europe. He has led engineering teams at Flutterwave and Paystack and now dedicates his expertise to training the next generation of African developers. His teaching style is practical, project-driven and locally contextualized.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="content-block" id="reviews">
+          <h3>Student Reviews</h3>
+          <div class="review-summary">
+            <div class="text-center">
+              <div class="review-big-num">4.9</div>
+              <div class="review-big-stars">★★★★★</div>
+              <div class="review-total">Course Rating</div>
+            </div>
+            <div class="rating-bars">
+              <div class="rating-bar-row">
+                <span style="font-size:0.78rem;color:var(--text-muted);width:12px">5</span>
+                <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+                <span class="bar-pct">82%</span>
+              </div>
+              <div class="rating-bar-row">
+                <span style="font-size:0.78rem;color:var(--text-muted);width:12px">4</span>
+                <div class="bar-track"><div class="bar-fill" style="width:13%"></div></div>
+                <span class="bar-pct">13%</span>
+              </div>
+              <div class="rating-bar-row">
+                <span style="font-size:0.78rem;color:var(--text-muted);width:12px">3</span>
+                <div class="bar-track"><div class="bar-fill" style="width:3%;background:#CBD5E1"></div></div>
+                <span class="bar-pct">3%</span>
+              </div>
+              <div class="rating-bar-row">
+                <span style="font-size:0.78rem;color:var(--text-muted);width:12px">2</span>
+                <div class="bar-track"><div class="bar-fill" style="width:1%;background:#CBD5E1"></div></div>
+                <span class="bar-pct">1%</span>
+              </div>
+              <div class="rating-bar-row">
+                <span style="font-size:0.78rem;color:var(--text-muted);width:12px">1</span>
+                <div class="bar-track"><div class="bar-fill" style="width:1%;background:#CBD5E1"></div></div>
+                <span class="bar-pct">1%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-item">
+            <div class="reviewer-info">
+              <img src="images/team/test-thumb2.jpg" alt="" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Chidinma Okafor</div>
+                <div class="reviewer-meta">Lagos, Nigeria · 3 months ago</div>
+              </div>
+              <div class="review-stars ms-auto">★★★★★</div>
+            </div>
+            <p class="review-text">This course completely transformed my career. Emeka's teaching style is clear, practical and the Nigerian context in the examples made it so easy to relate. I landed my first dev job 4 months after completing this!</p>
+          </div>
+
+          <div class="review-item">
+            <div class="reviewer-info">
+              <img src="images/team/test-thumb3.jpg" alt="" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Kofi Mensah</div>
+                <div class="reviewer-meta">Accra, Ghana · 5 months ago</div>
+              </div>
+              <div class="review-stars ms-auto">★★★★★</div>
+            </div>
+            <p class="review-text">Best investment I've made in myself. The projects are real, the explanations are thorough and the community support is excellent. I've already started freelancing and earning in USD. Highly recommended!</p>
+          </div>
+
+          <div class="review-item">
+            <div class="reviewer-info">
+              <img src="images/team/test-thumb4.jpg" alt="" class="reviewer-avatar">
+              <div>
+                <div class="reviewer-name">Amina Mwangi</div>
+                <div class="reviewer-meta">Nairobi, Kenya · 2 months ago</div>
+              </div>
+              <div class="review-stars ms-auto">★★★★☆</div>
+            </div>
+            <p class="review-text">Extremely comprehensive course. The only reason I'm giving 4 stars instead of 5 is I would love more content on TypeScript — but the fundamentals covered here are rock solid. Emeka is a fantastic instructor.</p>
+          </div>
+
+        </div>
+
+      </div><!-- /col-lg-8 -->
+
+
+      <!-- ====== RIGHT: Sticky Enroll Card ====== -->
+      <div class="col-lg-4">
+        <div class="enroll-card">
+          <div class="enroll-card-preview">
+            <img src="images/service/service-1.jpg" alt="Course Preview">
+            <div class="preview-play-btn">
+              <span><i class="icofont-play-alt-2"></i></span>
+              <p>Preview this course</p>
+            </div>
+          </div>
+
+          <div class="enroll-card-body">
+            <div class="price-wrap">
+              <span class="price-main">₦19,999</span>
+              <span class="price-original">₦35,000</span>
+              <span class="discount-badge">43% OFF</span>
+            </div>
+
+            <div class="timer-strip">
+              <i class="icofont-clock-time"></i>
+              <strong>2 days</strong> left at this price!
+            </div>
+
+            <a href="register.html" class="btn-enroll-main">Enroll Now</a>
+
+            <button class="btn-wishlist-card">
+              <i class="icofont-heart-alt"></i> Add to Wishlist
+            </button>
+
+            <div class="guarantee">
+              <i class="icofont-shield" style="color:var(--accent)"></i>
+              30-day money-back guarantee
+            </div>
+
+            <ul class="includes-list">
+              <li><i class="icofont-clock-time"></i> 42 hours of on-demand video</li>
+              <li><i class="icofont-book-alt"></i> 187 lessons in 15 sections</li>
+              <li><i class="icofont-code-alt"></i> 15 hands-on coding projects</li>
+              <li><i class="icofont-mobile-phone"></i> Access on mobile, tablet & desktop</li>
+              <li><i class="icofont-certificate"></i> Certificate of completion</li>
+              <li><i class="icofont-infinite"></i> Lifetime access</li>
+              <li><i class="icofont-users-alt-5"></i> Private community access</li>
+            </ul>
+
+            <div class="share-row mt-3">
+              <span style="font-size:0.78rem;color:var(--text-muted);font-family:var(--font-display);font-weight:600">Share:</span>
+              <button class="share-btn"><i class="icofont-facebook"></i></button>
+              <button class="share-btn"><i class="icofont-twitter"></i></button>
+              <button class="share-btn"><i class="icofont-linkedin"></i></button>
+              <button class="share-btn" title="Copy link"><i class="icofont-link"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related Courses widget -->
+        <div class="content-block mt-4" style="position:sticky;top:calc(90px + 580px + 24px)">
+          <h3 style="font-size:1rem;border-bottom:none;padding-bottom:0;margin-bottom:16px">Related Courses</h3>
+          <a href="course_single.html" class="related-card">
+            <div class="related-thumb"><img src="images/service/service-2.jpg" alt=""></div>
+            <div class="related-info">
+              <div class="related-cat">Data Science</div>
+              <div class="related-title">Data Science & ML with Python</div>
+              <div class="related-price">₦24,999</div>
+            </div>
+          </a>
+          <a href="course_single.html" class="related-card">
+            <div class="related-thumb"><img src="images/service/service-3.jpg" alt=""></div>
+            <div class="related-info">
+              <div class="related-cat">UI/UX Design</div>
+              <div class="related-title">UI/UX Design Masterclass</div>
+              <div class="related-price">₦17,999</div>
+            </div>
+          </a>
+          <a href="course_single.html" class="related-card">
+            <div class="related-thumb"><img src="images/service/service-4.jpg" alt=""></div>
+            <div class="related-info">
+              <div class="related-cat">Cybersecurity</div>
+              <div class="related-title">Ethical Hacking Complete Course</div>
+              <div class="related-price">₦22,499</div>
+            </div>
+          </a>
+        </div>
+
+      </div><!-- /col-lg-4 -->
+
+    </div><!-- /row -->
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:var(--dark);padding:80px 0 0">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-sm-6">
+        <div class="mb-5 mb-lg-0">
+          <div class="mb-4 d-flex align-items-center gap-2">
+            <img src="images/logo.png" alt="" style="height:36px">
+            <span style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)">Afri<em style="color:var(--primary);font-style:normal">Digital</em></span>
+          </div>
+          <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;line-height:1.8">Africa's premier digital learning platform, developed by BDIC.</p>
+          <ul class="list-inline footer-socials mt-4">
+            <li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Courses</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <ul class="list-unstyled footer-menu">
+          <li><a href="#">Software Development</a></li>
+          <li><a href="#">Data Science & AI</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">Cybersecurity</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Company</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <ul class="list-unstyled footer-menu">
+          <li><a href="about.html">About AfriDigital</a></li>
+          <li><a href="#">BDIC Partnership</a></li>
+          <li><a href="appoinment.html">Become Instructor</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Get in Touch</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <div class="mb-3">
+          <div class="d-flex gap-2 mb-1"><i class="icofont-email" style="color:var(--primary)"></i><span style="color:rgba(255,255,255,0.45);font-size:0.78rem">Support 24/7</span></div>
+          <a href="/cdn-cgi/l/email-protection#eb838e878784ab8a8d99828f828c829f8a87c58a8d9982888a" style="color:var(--white);font-size:0.88rem;font-weight:600;font-family:var(--font-display);text-decoration:none"><span class="__cf_email__" data-cfemail="6e060b0202012e0f081c070a0709071a0f02400f081c070d0f">[email&#160;protected]</span></a>
+        </div>
+        <div>
+          <div class="d-flex gap-2 mb-1"><i class="icofont-support" style="color:var(--primary)"></i><span style="color:rgba(255,255,255,0.45);font-size:0.78rem">Mon–Fri 08:00–20:00</span></div>
+          <a href="tel:" style="color:var(--white);font-size:0.88rem;font-weight:600;font-family:var(--font-display);text-decoration:none">+234-800-AFRIDIG</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;margin-top:56px">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-6"><span style="color:rgba(255,255,255,0.4);font-size:0.82rem">&copy; 2025 <strong>AfriDigital</strong> — Developed by <a href="#" style="color:var(--primary)">BDIC</a>. All rights reserved.</span></div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <form class="d-flex gap-2 justify-content-lg-end">
+            <input type="email" class="form-control" placeholder="Newsletter" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:var(--white);max-width:220px">
+            <button type="submit" class="btn-main" style="padding:10px 18px;font-size:0.82rem;white-space:nowrap">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-3"><a class="backtop" href="#top"><i class="icofont-long-arrow-up"></i></a></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AfriDigital shared scripts -->
+<script src="js/afridigital.js"></script>

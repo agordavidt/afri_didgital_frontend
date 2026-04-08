@@ -1,0 +1,368 @@
+/* ==========================================================================
+   SHARED VARIABLES (assumed to already exist in style.css — if not, add them)
+   ========================================================================== */
+:root {
+  --primary: #f97316;
+  --primary-dark: #c2410c;
+  --primary-light: #fb923c;
+  --secondary: #0f172a;
+  --accent: #10b981;
+  --dark: #0f172a;
+  --gray-soft: #f8fafc;
+  --gray-mid: #e2e8f0;
+  --white: #ffffff;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-md: 0 10px 30px rgba(15,23,42,0.08);
+  --transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+  --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+}
+
+/* ==========================================================================
+   NAVIGATION — Command Bar (shared across pages)
+   ========================================================================== */
+#mainNav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  padding: 14px 0;
+  transition: padding 0.4s ease;
+}
+
+#mainNav.nav-page .nav-bar {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(15,23,42,0.1);
+  box-shadow: 0 4px 24px rgba(15,23,42,0.07);
+}
+
+#mainNav.nav-page.scrolled .nav-bar {
+  box-shadow: 0 8px 40px rgba(15,23,42,0.12);
+}
+
+#mainNav.nav-dark .nav-bar {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+
+#mainNav.nav-dark.nav-solid .nav-bar {
+  background: rgba(10,18,35,0.88);
+  backdrop-filter: blur(20px);
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+
+.nav-bar {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 8px 0 20px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+}
+
+.nav-bar::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent);
+  border-radius: 1px;
+}
+
+/* Logo, links, auth, hamburger, mobile drawer — unchanged from your code */
+.n-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.5px; flex-shrink: 0; text-decoration: none; }
+.nav-dark .n-logo          { color: #fff; }
+.nav-dark .n-logo em       { color: var(--primary); font-style: normal; }
+.nav-page .n-logo          { color: var(--secondary); }
+.nav-page .n-logo em       { color: var(--primary); font-style: normal; }
+
+.n-center { display: flex; align-items: center; position: absolute; left: 50%; transform: translateX(-50%); }
+
+.n-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  letter-spacing: 0.3px;
+  position: relative;
+}
+
+/* ... rest of nav styles (n-link states, n-sep, n-signin, n-start, hamburger, mobile drawer) remain the same ... */
+
+@media (max-width: 900px) {
+  .n-center, .n-signin { display: none; }
+  .n-hamburger { display: flex; }
+  .nav-bar { padding: 0 10px 0 16px; }
+}
+
+/* ==========================================================================
+   PAGE HERO — used on both courses list and single course
+   ========================================================================== */
+.page-title,
+.course-hero {
+  background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+}
+
+.page-title { padding: 96px 0 60px; }
+.course-hero { padding: 60px 0 0; }
+
+.page-title::before,
+.course-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.course-hero::before { top: -80px; right: -80px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%); }
+
+.page-eyebrow,
+.course-tag {
+  display: inline-block;
+  background: rgba(249,115,22,0.15);
+  border: 1px solid rgba(249,115,22,0.3);
+  color: rgba(255,255,255,0.85);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+.course-tag { font-size: 0.72rem; letter-spacing: 1.2px; color: var(--primary-light); }
+
+.page-title h1,
+.course-hero h1 {
+  color: var(--white);
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.page-title h1 { font-size: clamp(2rem, 4vw, 3rem); }
+.course-hero h1 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); }
+
+.page-title p,
+.course-hero .lead-text {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.75;
+}
+
+.course-hero .lead-text { max-width: 600px; margin-bottom: 24px; }
+
+/* Breadcrumbs — unified */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.breadcrumb-nav li { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.breadcrumb-nav li a { color: rgba(255,255,255,0.65); text-decoration: none; transition: var(--transition); }
+.breadcrumb-nav li a:hover { color: var(--primary); }
+.breadcrumb-nav li.active { color: var(--primary); }
+
+/* ==========================================================================
+   COURSES LIST PAGE SPECIFIC
+   ========================================================================== */
+.courses-toolbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-mid);
+  padding: 16px 0;
+  position: sticky;
+  top: 70px;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(15,23,42,0.06);
+}
+
+.toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.79rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid var(--gray-mid);
+  color: var(--text-body);
+  background: var(--white);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.filter-pill:hover { border-color: var(--primary); color: var(--primary); }
+
+.filter-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 14px rgba(249,115,22,0.28);
+}
+
+.toolbar-right { display: flex; align-items: center; gap: 12px; }
+
+.result-count { font-size: 0.83rem; color: var(--text-muted); font-family: var(--font-display); white-space: nowrap; }
+.result-count strong { color: var(--dark); }
+
+.sort-select {
+  border: 1.5px solid var(--gray-mid);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--dark);
+  background: var(--white);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.sort-select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+
+.courses-section { padding: 60px 0 100px; background: var(--gray-soft); }
+
+/* Course card (listing) */
+.course-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--gray-mid);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1), border-color 0.25s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(15,23,42,0.14);
+  border-color: transparent;
+}
+
+.card-thumb {
+  position: relative;
+  overflow: hidden;
+  height: 195px;
+  flex-shrink: 0;
+}
+
+.card-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.course-card:hover .card-thumb img { transform: scale(1.08); }
+
+/* ... rest of course-card, badge-tag, btn-wishlist, overlay-play, card-content, card-meta, card-footer-row, btn-enroll-sm, load-more-wrap, promo-strip ... */
+
+/* ==========================================================================
+   SINGLE COURSE PAGE SPECIFIC
+   ========================================================================== */
+.hero-tabs-bar {
+  background: rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+}
+
+.hero-tabs-bar .nav-link {
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 16px 20px;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  transition: var(--transition);
+}
+
+.hero-tabs-bar .nav-link:hover,
+.hero-tabs-bar .nav-link.active {
+  color: var(--white);
+  border-bottom-color: var(--primary);
+  background: transparent;
+}
+
+.course-body { padding: 60px 0 100px; background: var(--gray-soft); }
+
+.content-block {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  margin-bottom: 24px;
+  border: 1px solid var(--gray-mid);
+}
+
+.content-block h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gray-mid);
+}
+
+/* ... rest of single-course styles: learn-grid, req-list, accordion, lesson-item, instructor-card-detail, review-summary, rating-bar, enroll-card, related-card ... */
+
+/* ==========================================================================
+   MEDIA QUERIES — shared & page-specific
+   ========================================================================== */
+@media (max-width: 991px) {
+  .enroll-card { position: relative; top: 0; margin-bottom: 32px; }
+  .course-hero { padding-bottom: 30px; }
+}
+
+@media (max-width: 767px) {
+  .courses-toolbar { top: 0; position: relative; }
+  .toolbar-inner { flex-direction: column; align-items: flex-start; }
+  .toolbar-left { overflow-x: auto; padding-bottom: 4px; flex-wrap: nowrap; width: 100%; }
+  .toolbar-right { width: 100%; justify-content: space-between; }
+}
+
+@media (max-width: 575px) {
+  .learn-grid { grid-template-columns: 1fr; }
+  .review-summary { flex-direction: column; gap: 16px; }
+  .instructor-card-detail { flex-direction: column; }
+}

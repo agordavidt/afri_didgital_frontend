@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AfriDigital — Learn. Grow. Excel.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="AfriDigital - Africa's premier e-learning platform offering world-class courses in tech, business, design and more.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="BDIC">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+  <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body id="top">
+
+<!-- ============================================================
+     NAVIGATION — Command Bar (dark variant, fixed)
+     IDs: #mainNav, #navBurger, #navMobile  ← matches afridigital.js
+============================================================ -->
+<nav id="mainNav">
+  <div class="nav-wrap">
+    <div class="nav-bar">
+      <a href="index.html" class="n-logo">Afri<em>Digital</em></a>
+
+      <div class="n-center">
+        <a href="index.html" class="n-link active">Home</a>
+        <span class="n-sep"></span>
+        <a href="courses.html" class="n-link catalogue">Catalogue</a>
+        <span class="n-sep"></span>
+        <a href="contact.html" class="n-link">Talk to Us</a>
+      </div>
+
+      <div class="n-right">
+        <a href="login.html" class="n-signin">Sign In</a>
+        <a href="register.html" class="n-start">Get Started</a>
+      </div>
+
+      <button class="n-hamburger" id="navBurger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="n-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="courses.html" style="color:var(--primary)">Catalogue</a>
+    <a href="contact.html">Talk to Us</a>
+    <a href="login.html">Sign In</a>
+    <a href="register.html" class="n-mobile-cta">Get Started Free</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     SECTION 1: HERO
+     Dark section — fixed nav is transparent here, blends perfectly.
+     Hero has padding-top: 80px to clear the fixed nav bar (52px height + 14px padding × 2 = 80px).
+============================================================ -->
+<section class="vp" id="hero">
+
+  <!-- BG layer -->
+  <div class="hero-grid"></div>
+  <div class="hero-glow glow-a"></div>
+  <div class="hero-glow glow-b"></div>
+
+  <!-- Particles -->
+  <div class="particle" style="width:5px;height:5px;background:var(--primary);top:22%;left:12%;animation-duration:11s;animation-delay:0s;opacity:0.5"></div>
+  <div class="particle" style="width:3px;height:3px;background:var(--accent);top:65%;left:7%;animation-duration:9s;animation-delay:2s;opacity:0.4"></div>
+  <div class="particle" style="width:6px;height:6px;background:rgba(249,115,22,0.5);top:40%;right:13%;animation-duration:13s;animation-delay:1s;opacity:0.45"></div>
+  <div class="particle" style="width:4px;height:4px;background:var(--accent);top:78%;right:22%;animation-duration:10s;animation-delay:3s;opacity:0.35"></div>
+
+  <div class="container py-3">
+    <div class="row align-items-center g-4">
+
+      <!-- LEFT: Copy -->
+        <div class="col-lg-6">
+          <div class="hero-eyebrow">
+            <span class="ey-dash"></span>
+            Global Excellence in Digital Education
+          </div>
+
+          <h1 class="hero-h1">
+            <span class="h1-line"><span class="h1-line-inner">Unlock Your</span></span>
+            <span class="h1-line"><span class="h1-line-inner"><span class="h1-accent">Digital Future</span></span></span>
+            <span class="h1-line"><span class="h1-line-inner">with AfriDigital</span></span>
+          </h1>
+
+          <p class="hero-p">
+            Master in-demand skills through world-class training, 
+            expert mentorship, and industry-recognized certifications 
+            built for the global market.
+          </p>
+
+          <div class="hero-actions">
+            <a href="courses.html" class="btn-hero-fill">Explore Courses</a>
+            <a href="register.html" class="btn-hero-ghost">Reserve Access</a>
+          </div>
+        </div>
+
+      <!-- RIGHT: Image -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="hero-visual">
+          <!-- Orbit rings -->
+          <div class="orbit-ring" style="width:480px;height:480px;position:absolute;top:50%;left:50%;margin:-240px 0 0 -240px;animation-duration:22s;">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="orbit-ring" style="width:400px;height:400px;position:absolute;top:50%;left:50%;margin:-200px 0 0 -200px;animation-duration:15s;animation-direction:reverse;border-style:dashed;opacity:0.4;"></div>
+
+          <div class="hero-img-frame">
+            <img src="images/hero_2.png" alt="Student learning on AfriDigital">
+
+            <div class="float-notif fn-1">
+              <div class="fn-icon fn-icon-g"><i class="icofont-live-support"></i></div>
+              <div class="fn-text">
+                <strong>Interactive Live Sessions</strong>
+                <span>Real-time Q&A with experts</span>
+              </div>
+            </div>
+            <div class="float-notif fn-2">
+              <div class="fn-icon fn-icon-o"><i class="icofont-badge"></i></div>
+              <div class="fn-text">
+                <strong>Industry Vetted</strong>
+                <span>Curriculums built for Africa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue">
+    <span class="scroll-cue-label">scroll</span>
+    <div class="scroll-cue-bar"></div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 2: WHY AFRIDIGITAL (light bg)
+     Nav is now frosted/solid when scrolled here — works on light section.
+============================================================ -->
+<section class="vp" id="why">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Left -->
+
+
+      <div class="col-lg-6">
+        <div class="sr">
+          <div class="why-eyebrow">The AfriDigital Edge</div> <h2 class="why-h2">Global Standards.<br><em>Relatable</em> Context.</h2>
+          <p class="why-sub">We bridge the gap between world-class digital education and real-world application, using case studies and mentorship that actually resonate with your environment.</p>
+        </div>
+        <div class="feat-grid sr sr-d2">
+          <div class="feat-box">
+            <div class="feat-n">01</div>
+            <h5>High-Impact Curriculum</h5> <p>Master skills designed to meet the rigorous demands of the global tech economy.</p>
+          </div>
+          <div class="feat-box">
+            <div class="feat-n">02</div>
+            <h5>Relatable Mentorship</h5> <p>Learn from experts who understand your journey and speak your professional language.</p>
+          </div>
+           <div class="feat-box">
+            <div class="feat-n">03</div>
+            <h5>African Context</h5>
+            <p>Real case studies and projects rooted in African business environments.</p>
+          </div>
+          <div class="feat-box">
+            <div class="feat-n">04</div>
+            <h5>24/7 Support</h5>
+            <p>Our learner success team is always on hand to keep you on track.</p>
+          </div>
+          </div>
+      </div>
+
+      <!-- Right: Stats + progress -->
+      <div class="col-lg-6 sr sr-d3">             
+        <div class="about-content ps-lg-4 mt-4 mt-lg-0">
+          <div class="tag">About AfriDigital</div>
+          <h2>Empowering Africa<br>Through Digital Skills</h2>
+          <div class="divider my-4"></div>
+          <p>
+              AfriDigital is a premier gateway to mastering the digital economy. Our mission 
+              is to provide world-class education that feels personal and accessible, 
+              bridging the gap between global industry standards and local career 
+              realities. We believe that professional excellence has no borders, and we 
+              are here to ensure you have the tools, the mentorship, and the 
+              certification to compete anywhere in the world.
+            </p>
+
+          <ul class="check-list mt-4 mb-5">
+            <li><i class="icofont-check-circled"></i> Industry-relevant curriculum designed with top employers</li>
+            <li><i class="icofont-check-circled"></i> Globally recognized certificates upon completion</li>
+            <li><i class="icofont-check-circled"></i> Mentorship from Africa's top tech & business leaders</li>
+            <li><i class="icofont-check-circled"></i> Designed for learners across all 54 African nations</li>
+          </ul>
+
+          <!-- <a href="about.html" class="btn-main">
+            Our Story <i class="icofont-simple-right"></i>
+          </a> -->
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3: COURSES PREVIEW (dark)
+============================================================ -->
+<section class="vp" id="courses">
+  <div class="container-fluid px-4 px-lg-5 w-100">
+
+    <div class="courses-top sr">
+      <div>
+        <div class="ct-eyebrow">Featured &mdash; <em>Top Courses</em></div>
+        <h2 class="ct-h2">Start learning<br>something new today</h2>
+      </div>
+      <a href="courses.html" class="ct-see-all sr sr-d2">Explore Our Catalogue</a>
+    </div>
+
+    <div class="courses-scroll sr sr-d3" id="courseScroll">
+      <div class="courses-row">
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_1.jpg" alt="Full-Stack"></div>
+          <div class="c-body">
+            <div class="c-cat">Software Dev</div>
+            <div class="c-title">Full-Stack Web Development Bootcamp 2024</div>
+            <div class="c-foot"><span class="c-price">₦19,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_7.jpg" alt="Data Science"></div>
+          <div class="c-body">
+            <div class="c-cat">Data Science</div>
+            <div class="c-title">Data Science & Machine Learning with Python</div>
+            <div class="c-foot"><span class="c-price">₦24,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_8.jpg" alt="UI/UX"></div>
+          <div class="c-body">
+            <div class="c-cat">UI/UX Design</div>
+            <div class="c-title">UI/UX Design Masterclass: From Zero to Pro</div>
+            <div class="c-foot"><span class="c-price">₦17,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_2.jpg" alt="Cybersecurity"></div>
+          <div class="c-body">
+            <div class="c-cat">Cybersecurity</div>
+            <div class="c-title">Ethical Hacking & Cybersecurity Complete Course</div>
+            <div class="c-foot"><span class="c-price">₦22,499</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_3.jpg" alt="Marketing"></div>
+          <div class="c-body">
+            <div class="c-cat">Digital Marketing</div>
+            <div class="c-title">Digital Marketing & Social Media Strategy 2024</div>
+            <div class="c-foot"><span class="c-price">₦14,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_4.jpg" alt="Business"></div>
+          <div class="c-body">
+            <div class="c-cat">Business</div>
+            <div class="c-title">African Entrepreneurship: Build & Scale Your Business</div>
+            <div class="c-foot"><span class="c-price">₦12,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_5.jpg" alt="React"></div>
+          <div class="c-body">
+            <div class="c-cat">Software Dev</div>
+            <div class="c-title">React & Next.js: Build Production-Grade Apps</div>
+            <div class="c-foot"><span class="c-price free">Free</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+        <a href="course_single.html" class="c-card">
+          <div class="c-thumb"><img src="images/course_6.jpg" alt="SQL"></div>
+          <div class="c-body">
+            <div class="c-cat">Data Science</div>
+            <div class="c-title">SQL & Database Design: Beginner to Advanced</div>
+            <div class="c-foot"><span class="c-price">₦11,999</span><span class="c-meta">Comprehensive</span></div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="drag-hint sr sr-d3">
+      <div class="dh-line"></div>
+      <span class="dh-text">Drag to explore more courses</span>
+      <div class="dh-line"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4: SOCIAL PROOF / TESTIMONIALS (light)
+============================================================ -->
+<section class="vp" id="proof">
+  <div class="container">
+
+    <div class="row mb-3 align-items-end">
+      <div class="col-lg-6 sr">
+        <div class="proof-eyebrow">Learner Stories</div>
+        <h2 class="proof-h2">Real results,<br>real Africans</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end sr sr-d2">
+        <p style="color:var(--text-muted);font-size:0.83rem;max-width:280px;margin-left:auto">
+          Our curriculum is designed to help Africans bridge the digital gap and compete on a global stage.
+        </p>
+      </div>
+    </div>
+
+    <div class="testi-grid sr sr-d2">
+
+      <!-- Tall card — spans 2 rows -->
+      <div class="testi-card tall" style="grid-row: span 2">
+        <p class="testi-text">"AfriDigital helped me go from zero coding knowledge to landing a ₦500k/month frontend developer role in 6 months. The curriculum is world-class and the instructors are incredibly supportive. I've recommended it to everyone."</p>
+        <div class="testi-author">
+          <img src="images/team/test-thumb1.jpg" alt="">
+          <div>
+            <div class="testi-author-name">Chidinma Okafor</div>
+            <div class="testi-author-loc">Lagos, Nigeria</div>
+          </div>
+          <div class="testi-stars-sm ms-auto">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- Stat card -->
+      <div class="testi-stat-card sr sr-d2">
+        <div class="tsc-big">TOP</div>
+        <div class="tsc-label">Rated Curriculum for African Tech Talent</div>
+        <div class="tsc-stars">★★★★★</div>
+      </div>
+
+      <!-- Regular -->
+      <div class="testi-card sr sr-d3">
+        <p class="testi-text">"Completed Data Science while working full-time. Self-paced format was perfect — I now freelance for international clients earning in USD."</p>
+        <div class="testi-author">
+          <img src="images/team/test-thumb2.jpg" alt="">
+          <div>
+            <div class="testi-author-name">Kofi Asante</div>
+            <div class="testi-author-loc">Accra, Ghana</div>
+          </div>
+          <div class="testi-stars-sm ms-auto">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- Regular -->
+      <div class="testi-card sr sr-d3">
+        <p class="testi-text">"The mentorship at AfriDigital is unmatched. My UX mentor helped me build a portfolio that got me hired at a top startup."</p>
+        <div class="testi-author">
+          <img src="images/team/test-thumb3.jpg" alt="">
+          <div>
+            <div class="testi-author-name">Amina Mwangi</div>
+            <div class="testi-author-loc">Nairobi, Kenya</div>
+          </div>
+          <div class="testi-stars-sm ms-auto">★★★★★</div>
+        </div>
+      </div>
+
+      <!-- Regular -->
+      <div class="testi-card sr sr-d3">
+        <p class="testi-text">"Pricing is so fair for the quality. AfriDigital understands the African context — the examples are relatable. 10/10!"</p>
+        <div class="testi-author">
+          <img src="images/team/test-thumb4.jpg" alt="">
+          <div>
+            <div class="testi-author-name">Tunde Abiodun</div>
+            <div class="testi-author-loc">Abuja, Nigeria</div>
+          </div>
+          <div class="testi-stars-sm ms-auto">★★★★★</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 5: CTA (dark navy)
+============================================================ -->
+<section class="vp" id="cta">
+
+  <!-- Ticker strip at very top -->
+  <div class="cta-ticker">
+    <div class="cta-ticker-inner">
+      <span>Start Learning Today</span><span class="ticker-dot">·</span>
+      <span>Expert Mentorship</span><span class="ticker-dot">·</span> 
+      <span>Industry Certificates</span><span class="ticker-dot">·</span>
+      <span>Flexible Learning</span><span class="ticker-dot">·</span> 
+      <span>Built for Africa</span><span class="ticker-dot">·</span>
+      <span>Start Learning Today</span><span class="ticker-dot">·</span>
+      <span>Expert Mentorship</span><span class="ticker-dot">·</span> 
+      <span>Industry Certificates</span><span class="ticker-dot">·</span>
+      <span>Flexible Learning</span><span class="ticker-dot">·</span> 
+      <span>Built for Africa</span><span class="ticker-dot">·</span>
+    </div>
+  </div>
+
+
+
+
+  <div class="container cta-body">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-6 sr">
+        <div class="cta-tag">Invest in yourself</div>
+        <h2 class="cta-h2">Your <em>digital career</em><br>begins here</h2>
+        
+        <p class="cta-sub">
+          Access premium, expert-led courses and dedicated mentorship designed to take you from beginner to professional. 
+          Select your course, connect with a mentor, and start building your future today.
+        </p>
+        
+        <div class="cta-actions">
+          <a href="courses.html" class="btn-cta-main">Enroll in a Course</a>
+          <a href="register.html" class="btn-cta-outline">Join the Platform</a>
+        </div>
+
+        <div class="cta-trust-bar" style="margin-top: 25px; display: flex; gap: 20px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+            <i class="icofont-shield-check" style="color: #22c55e; font-size: 1.2rem;"></i>
+            <span>Secure SSL Payment</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+            <i class="icofont-card" style="color: var(--primary); font-size: 1.2rem;"></i>
+            <span>Local Cards & Bank Transfer</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+            <i class="icofont-verification-check" style="color: #3b82f6; font-size: 1.2rem;"></i>
+            <span>Verified Certificate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 sr sr-d3">
+        <div class="cta-stat-grid">
+          <div class="cta-stat-box">
+            <div class="cta-stat-num">Live<em></em></div> <div class="cta-stat-lbl">Expert Classes</div>
+          </div>
+          <div class="cta-stat-box">
+            <div class="cta-stat-num">Global<em></em></div> <div class="cta-stat-lbl">Certification</div>
+          </div>
+          <div class="cta-stat-box span2">
+            <div class="cta-stat-num">Growth<em></em></div> <div class="cta-stat-lbl">Empowering learners across Africa — join us</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-lg-4 col-md-6">
+        <a href="index.html" class="sf-logo">Afri<em>Digital</em></a>
+        <p class="sf-desc">Africa's premier digital learning platform, developed by BDIC. Unlocking potential through world-class education.</p>
+        <div class="sf-socials">
+          <a href="#"><i class="icofont-facebook"></i></a>
+          <a href="#"><i class="icofont-twitter"></i></a>
+          <a href="#"><i class="icofont-linkedin"></i></a>
+          <a href="#"><i class="icofont-instagram"></i></a>
+          <a href="#"><i class="icofont-youtube-play"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="sf-col-title">Platform</div>
+        <ul class="sf-links">
+          <li><a href="courses.html">Course Catalogue</a></li>
+          <li><a href="course_single.html">Course Details</a></li>
+          <li><a href="register.html">Create Account</a></li>
+          <li><a href="login.html">Sign In</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-6 col-6">
+        <div class="sf-col-title">Company</div>
+        <ul class="sf-links">
+          <li><a href="#">About AfriDigital</a></li>
+          <li><a href="#">BDIC Partnership</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="sf-col-title">Stay Updated</div>
+        <p style="color:rgba(255,255,255,0.38);font-size:0.8rem;margin-bottom:12px">New courses, tips and learning resources every week.</p>
+        <div style="display:flex;gap:8px">
+          <input type="email" placeholder="your@email.com"
+            style="flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:9px;padding:10px 13px;color:#fff;font-family:var(--font-body);font-size:0.82rem;outline:none">
+          <button type="button"
+            style="background:var(--primary);color:#fff;border:none;border-radius:9px;padding:10px 16px;font-family:var(--font-display);font-weight:700;font-size:0.78rem;cursor:pointer;white-space:nowrap;transition:background 0.3s"
+            onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#F97316'">
+            Subscribe
+          </button>
+        </div>
+        <p style="color:rgba(255,255,255,0.22);font-size:0.7rem;margin-top:8px">We respect your privacy. Unsubscribe anytime.</p>
+      </div>
+
+    </div>
+
+    <div class="sf-bottom">
+      <div class="sf-copy">
+        &copy; 2025 <strong>AfriDigital</strong> — Developed by <a href="#">BDIC</a>. All rights reserved.
+        &nbsp;<a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a>
+      </div>
+      <a href="#top" class="backtop"><i class="icofont-long-arrow-up"></i></a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/jquery/jquery.js"></script>
+<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+
+<script>
+  /* ---- NAVIGATION ---- */
+  const nav = document.getElementById('mainNav');
+  const burger = document.getElementById('navBurger');
+  const mobile = document.getElementById('navMobile');
+
+  function updateNav() {
+    nav.classList.toggle('nav-solid', window.scrollY > 50);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  burger.addEventListener('click', () => {
+    mobile.classList.toggle('open');
+    burger.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target)) {
+      mobile.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
+
+  /* ---- SCROLL REVEAL ---- */
+  const srEls = document.querySelectorAll('.sr');
+  const srObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  srEls.forEach(el => srObs.observe(el));
+
+  /* ---- PROGRESS BARS ---- */
+  const fills = document.querySelectorAll('.prog-fill');
+  const progObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('go'); progObs.unobserve(e.target); } });
+  }, { threshold: 0.3 });
+  fills.forEach(el => progObs.observe(el));
+
+  /* ---- DRAG SCROLL FOR COURSES ---- */
+  const cs = document.getElementById('courseScroll');
+  let isDrag = false, startX, scrollLeft0;
+  cs.addEventListener('mousedown', e => {
+    isDrag = true; startX = e.pageX - cs.offsetLeft; scrollLeft0 = cs.scrollLeft;
+    cs.classList.add('grabbing');
+  });
+  document.addEventListener('mouseup', () => { isDrag = false; cs.classList.remove('grabbing'); });
+  cs.addEventListener('mousemove', e => {
+    if (!isDrag) return; e.preventDefault();
+    cs.scrollLeft = scrollLeft0 - (e.pageX - cs.offsetLeft - startX);
+  });
+  let tx0;
+  cs.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; scrollLeft0 = cs.scrollLeft; }, { passive: true });
+  cs.addEventListener('touchmove', e => { cs.scrollLeft = scrollLeft0 - (e.touches[0].clientX - tx0); }, { passive: true });
+  let moved = false;
+  cs.addEventListener('mousedown', () => { moved = false; });
+  cs.addEventListener('mousemove', () => { moved = true; });
+  cs.querySelectorAll('a').forEach(a => a.addEventListener('click', e => { if (moved) e.preventDefault(); }));
+
+  /* ---- BACK TO TOP ---- */
+  document.querySelector('.backtop')?.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  /* ---- TESTIMONIALS SLIDER (if slick loaded) ---- */
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof $ !== 'undefined' && $.fn.slick) {
+      // Slick not used on homepage — testi grid is CSS-only
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

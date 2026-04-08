@@ -1,0 +1,1045 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact Us — AfriDigital</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Get in touch with the AfriDigital team. We're here to help with courses, support and partnerships.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="BDIC">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ============================================
+       PAGE HERO
+    ============================================ */
+    .page-title {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+      padding: 96px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-title::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-eyebrow {
+      display: inline-block;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 30px;
+      margin-bottom: 14px;
+    }
+    .page-title h1 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; margin-bottom: 12px;
+    }
+    .page-title p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem; max-width: 500px; margin: 0 auto;
+    }
+    .breadcrumb-nav {
+      display: flex; align-items: center; gap: 8px;
+      justify-content: center; list-style: none;
+      padding: 0; margin: 16px 0 0;
+    }
+    .breadcrumb-nav li { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+    .breadcrumb-nav li a { color: rgba(255,255,255,0.65); text-decoration: none; transition: var(--transition); }
+    .breadcrumb-nav li a:hover { color: var(--primary); }
+    .breadcrumb-nav li.active { color: var(--primary); }
+
+    /* ============================================
+       CONTACT CHANNEL CARDS
+    ============================================ */
+    .contact-channels {
+      padding: 70px 0 0;
+      background: var(--gray-soft);
+    }
+    .channel-card {
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-md);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+      height: 100%;
+    }
+    .channel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+    }
+    .channel-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto 18px;
+      transition: var(--transition);
+    }
+    .channel-card:hover .channel-icon { transform: scale(1.1); }
+    .channel-icon.orange  { background: rgba(249,115,22,0.1); color: var(--primary); }
+    .channel-icon.green   { background: rgba(16,185,129,0.1); color: var(--accent); }
+    .channel-icon.purple  { background: rgba(139,92,246,0.1); color: #8B5CF6; }
+    .channel-icon.navy    { background: rgba(30,58,95,0.1); color: var(--secondary); }
+
+    .channel-card h5 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .channel-card p {
+      font-size: 0.85rem; color: var(--text-muted);
+      margin-bottom: 14px; line-height: 1.65;
+    }
+    .channel-card a.channel-link {
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 0.88rem;
+      color: var(--primary); text-decoration: none;
+      transition: var(--transition);
+    }
+    .channel-card a.channel-link:hover { color: var(--primary-dark); }
+    .channel-tag {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(16,185,129,0.1);
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* ============================================
+       CONTACT FORM SECTION
+    ============================================ */
+    .contact-form-section {
+      background: var(--gray-soft);
+      padding: 70px 0 100px;
+    }
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--gray-mid);
+    }
+
+    /* Left info panel */
+    .form-info-panel {
+      background: linear-gradient(160deg, var(--secondary) 0%, var(--dark) 100%);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 560px;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-info-panel::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .form-info-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .panel-inner { position: relative; z-index: 2; }
+
+    .panel-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-display);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 30px;
+      margin-bottom: 24px;
+    }
+    .panel-tag .dot {
+      width: 6px; height: 6px;
+      background: var(--primary); border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+    .form-info-panel h2 {
+      color: var(--white);
+      font-size: 1.75rem; font-weight: 800;
+      line-height: 1.25; margin-bottom: 16px;
+    }
+    .form-info-panel h2 em { color: var(--primary); font-style: normal; }
+    .form-info-panel > .panel-inner > p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem; line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* Contact info items on panel */
+    .panel-contact-list {
+      list-style: none; padding: 0;
+      margin: 32px 0 0;
+    }
+    .panel-contact-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 20px;
+    }
+    .pci-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .pci-text strong {
+      display: block;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .pci-text a, .pci-text span {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.85rem; text-decoration: none;
+      transition: var(--transition);
+    }
+    .pci-text a:hover { color: var(--primary); }
+
+    /* Social row on panel */
+    .panel-socials {
+      display: flex; gap: 10px;
+      margin-top: 36px;
+      position: relative; z-index: 2;
+    }
+    .panel-socials a {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem; text-decoration: none;
+      transition: var(--transition);
+    }
+    .panel-socials a:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    /* FAQ topics on panel */
+    .faq-topics {
+      position: relative; z-index: 2;
+      margin-top: 32px;
+    }
+    .faq-topics p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem; font-family: var(--font-display);
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .faq-pills {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .faq-pills span {
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .faq-pills span:hover {
+      background: rgba(249,115,22,0.15);
+      border-color: rgba(249,115,22,0.3);
+      color: var(--primary-light);
+    }
+
+    /* Right form panel */
+    .form-right-panel {
+      padding: 52px 48px;
+    }
+    .form-header { margin-bottom: 32px; }
+    .form-header .step-label {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.73rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      color: var(--primary);
+      background: rgba(249,115,22,0.08);
+      padding: 5px 12px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .form-header h2 {
+      font-size: 1.75rem; font-weight: 800;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .form-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* Topic selector */
+    .topic-selector {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 28px;
+    }
+    .topic-btn {
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.78rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1.5px solid var(--gray-mid);
+      color: var(--text-body);
+      background: var(--white);
+      user-select: none;
+    }
+    .topic-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .topic-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 3px 12px rgba(249,115,22,0.25);
+    }
+
+    /* Form inputs */
+    .contact-form .form-label {
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.82rem;
+      color: var(--dark); margin-bottom: 7px;
+    }
+    .contact-form .form-control,
+    .contact-form .form-select {
+      border: 1.5px solid var(--gray-mid);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9rem; color: var(--dark);
+      background: var(--white);
+      transition: var(--transition);
+      height: auto;
+    }
+    .contact-form .form-control:focus,
+    .contact-form .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(249,115,22,0.1);
+      outline: none;
+    }
+    .contact-form .form-control.is-valid {
+      border-color: var(--accent);
+      background-image: none;
+    }
+    .contact-form .form-control.is-invalid {
+      border-color: #EF4444;
+      background-image: none;
+    }
+    .invalid-feedback { font-size: 0.77rem; }
+
+    textarea.form-control { resize: vertical; min-height: 130px; }
+
+    /* Char counter */
+    .char-counter {
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: var(--font-display);
+      margin-top: 4px;
+      transition: var(--transition);
+    }
+    .char-counter.warn { color: var(--primary); }
+    .char-counter.limit { color: #EF4444; }
+
+    /* Submit button */
+    .btn-contact-submit {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--white);
+      padding: 15px 40px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 0.95rem;
+      border: none; cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex; align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(249,115,22,0.35);
+      letter-spacing: 0.3px;
+    }
+    .btn-contact-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(249,115,22,0.45);
+    }
+    .btn-contact-submit:active { transform: translateY(0); }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      align-items: center;
+      gap: 14px;
+    }
+    .success-msg.show { display: flex; animation: fadeUp 0.4s ease both; }
+    .success-msg .msg-icon {
+      width: 44px; height: 44px;
+      background: rgba(16,185,129,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .success-msg strong { color: var(--dark); display: block; margin-bottom: 4px; font-family: var(--font-display); }
+    .success-msg span { font-size: 0.85rem; color: var(--text-muted); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       FAQ STRIP
+    ============================================ */
+    .faq-strip {
+      background: var(--white);
+      padding: 80px 0;
+      border-top: 1px solid var(--gray-mid);
+    }
+    .faq-strip .section-title h2 { font-size: 1.7rem; }
+
+    .faq-accordion .accordion-button {
+      font-family: var(--font-display);
+      font-weight: 600; font-size: 0.92rem;
+      color: var(--dark); background: var(--gray-soft);
+      padding: 16px 20px;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) {
+      color: var(--primary); background: rgba(249,115,22,0.05);
+      box-shadow: none;
+    }
+    .faq-accordion .accordion-button:focus { box-shadow: none; }
+    .faq-accordion .accordion-body {
+      font-size: 0.9rem; color: var(--text-body);
+      line-height: 1.75; padding: 16px 20px;
+    }
+    .faq-accordion .accordion-item {
+      border: 1px solid var(--gray-mid);
+      border-radius: var(--radius-sm) !important;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .form-info-panel { min-height: auto; padding: 44px 32px; }
+      .form-right-panel { padding: 44px 32px; }
+    }
+    @media (max-width: 575px) {
+      .form-right-panel { padding: 32px 20px; }
+      .topic-selector { gap: 6px; }
+    }
+  </style>
+
+
+  <style id="nav-css">
+    /* =====================================================
+       NAVIGATION — Command Bar (all pages)
+    ===================================================== */
+    #mainNav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 14px 0;
+      transition: padding 0.4s ease;
+    }
+    /* Light-theme pages: always solid */
+    #mainNav.nav-page .nav-bar {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(15,23,42,0.1);
+      box-shadow: 0 4px 24px rgba(15,23,42,0.07);
+    }
+    #mainNav.nav-page.scrolled .nav-bar {
+      box-shadow: 0 8px 40px rgba(15,23,42,0.12);
+    }
+    /* Dark-theme pages: transparent → frosted on scroll */
+    #mainNav.nav-dark .nav-bar {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+    }
+    #mainNav.nav-dark.nav-solid .nav-bar {
+      background: rgba(10,18,35,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .nav-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 8px 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+    }
+    .nav-bar::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 20%; right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent);
+      border-radius: 1px;
+    }
+    /* Logo */
+    .n-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-dark .n-logo { color: #fff; }
+    .nav-dark .n-logo em { color: var(--primary); font-style: normal; }
+    .nav-page .n-logo { color: var(--secondary); }
+    .nav-page .n-logo em { color: var(--primary); font-style: normal; }
+    /* Centre links */
+    .n-center {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .n-link {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      letter-spacing: 0.3px;
+      position: relative;
+    }
+    .nav-dark .n-link { color: rgba(255,255,255,0.55); }
+    .nav-dark .n-link:hover { color: #fff; }
+    .nav-dark .n-link.active { color: #fff; }
+    .nav-dark .n-link.catalogue { color: var(--primary); }
+    .nav-dark .n-link.catalogue:hover { background: rgba(249,115,22,0.1); color: #fff; }
+    .nav-page .n-link { color: rgba(15,23,42,0.5); }
+    .nav-page .n-link:hover { color: var(--dark); background: rgba(15,23,42,0.05); }
+    .nav-page .n-link.active { color: var(--secondary); font-weight: 700; }
+    .nav-page .n-link.catalogue { color: var(--primary); }
+    .nav-page .n-link.catalogue:hover { background: rgba(249,115,22,0.08); color: var(--primary-dark); }
+    /* Active dot */
+    .n-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    /* Separator */
+    .n-sep { width: 1px; height: 14px; flex-shrink: 0; }
+    .nav-dark .n-sep { background: rgba(255,255,255,0.15); }
+    .nav-page .n-sep { background: rgba(15,23,42,0.1); }
+    /* Right auth */
+    .n-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .n-signin {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 7px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-dark .n-signin { color: rgba(255,255,255,0.6); }
+    .nav-dark .n-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-page .n-signin { color: var(--text-body); }
+    .nav-page .n-signin:hover { color: var(--dark); background: rgba(15,23,42,0.06); }
+    .n-start {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: #fff;
+      background: var(--primary);
+      padding: 8px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .n-start:hover { color: #fff; background: #C2410C; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(249,115,22,0.4); }
+    /* Hamburger */
+    .n-hamburger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .n-hamburger span { display: block; width: 20px; height: 2px; border-radius: 2px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .nav-dark .n-hamburger span { background: rgba(255,255,255,0.8); }
+    .nav-page .n-hamburger span { background: var(--dark); }
+    .n-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .n-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .n-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    /* Mobile drawer */
+    .n-mobile {
+      display: none;
+      position: fixed;
+      top: 80px; left: 12px; right: 12px;
+      background: rgba(10,18,35,0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 20px 20px;
+      z-index: 899;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .n-mobile.open { display: block; animation: mobileSlide 0.28s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes mobileSlide {
+      from { opacity:0; transform: translateY(-12px) scale(0.97); }
+      to   { opacity:1; transform: translateY(0) scale(1); }
+    }
+    .n-mobile a {
+      display: block; padding: 11px 4px;
+      font-family: var(--font-display); font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .n-mobile a:last-child { border-bottom: none; }
+    .n-mobile a:hover { color: var(--primary); padding-left: 8px; }
+    .n-mobile-cta {
+      display: block !important; margin-top: 14px;
+      background: var(--primary) !important; color: #fff !important;
+      text-align: center; padding: 12px !important;
+      border-radius: 10px; border: none !important; font-weight: 700 !important;
+    }
+    .n-mobile-cta:hover { background: #C2410C !important; }
+    .nav-wrap { padding: 0 20px; }
+    @media (max-width: 900px) {
+      .n-center, .n-signin { display: none; }
+      .n-hamburger { display: flex; }
+      .nav-bar { padding: 0 10px 0 16px; }
+    }
+  </style>
+</head>
+
+<body id="top">
+<nav id="mainNav" class="nav-page">
+  <div class="nav-wrap">
+    <div class="nav-bar">
+      <a href="index.html" class="n-logo">Afri<em>Digital</em></a>
+
+      <div class="n-center">
+        <a href="index.html" class="n-link">Home</a>
+        <span class="n-sep"></span>
+        <a href="courses.html" class="n-link catalogue">Catalogue</a>
+        <span class="n-sep"></span>
+        <a href="contact.html" class="n-link active">Talk to Us</a>
+      </div>
+
+      <div class="n-right">
+        <a href="login.html" class="n-signin">Sign In</a>
+        <a href="register.html" class="n-start">Get Started</a>
+      </div>
+
+      <button class="n-hamburger" id="navBurger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="n-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="courses.html" style="color:var(--primary)">Catalogue</a>
+    <a href="contact.html">Talk to Us</a>
+    <a href="login.html">Sign In</a>
+    <a href="register.html" class="n-mobile-cta">Get Started Free</a>
+  </div>
+</nav>
+
+
+
+
+
+<!-- ===== HEADER ===== -->
+
+
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-title">
+  <div class="container text-center">
+    <span class="page-eyebrow">We respond within 24 hours</span>
+    <h1>Get in Touch</h1>
+    <p>Have a question, feedback or want to explore a partnership? Our team is ready to help you.</p>
+    <ul class="breadcrumb-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><i class="icofont-thin-right" style="font-size:0.65rem"></i></li>
+      <li class="active">Contact Us</li>
+    </ul>
+  </div>
+</section>
+
+
+
+<!-- ===== CONTACT FORM ===== -->
+<section class="contact-form-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-11 col-lg-12">
+        <div class="form-card">
+          <div class="row g-0">
+
+            <!-- Left info panel -->
+            <div class="col-lg-5">
+              <div class="form-info-panel h-100">
+                <div class="panel-inner">
+                  <span class="panel-tag"><span class="dot"></span> We'd love to hear from you</span>
+                  <h2>Send Us a <em>Message</em></h2>
+                  <p>Whether you're a learner needing course support, an instructor wanting to join, or a company exploring corporate training — we're here for you.</p>
+
+                  <ul class="panel-contact-list">
+                    <li>
+                      <div class="pci-icon"><i class="icofont-email"></i></div>
+                      <div class="pci-text">
+                        <strong>General Enquiries</strong>
+                        <a href="/cdn-cgi/l/email-protection#076f626b6b68476661756e636e606e73666b296661756e6466"><span class="__cf_email__" data-cfemail="f79f929b9b98b79691859e939e909e83969bd99691859e9496">[email&#160;protected]</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="pci-icon"><i class="icofont-briefcase"></i></div>
+                      <div class="pci-text">
+                        <strong>Partnerships & Corporate Training</strong>
+                        <a href="/cdn-cgi/l/email-protection#53233221273d362120133235213a373a343a27323f7d3235213a3032"><span class="__cf_email__" data-cfemail="c4b4a5b6b0aaa1b6b784a5a2b6ada0ada3adb0a5a8eaa5a2b6ada7a5">[email&#160;protected]</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="pci-icon"><i class="icofont-teacher"></i></div>
+                      <div class="pci-text">
+                        <strong>Become an Instructor</strong>
+                        <a href="/cdn-cgi/l/email-protection#6a1e0f0b09022a0b0c18030e030d031e0b06440b0c1803090b"><span class="__cf_email__" data-cfemail="780c1d191b1038191e0a111c111f110c191456191e0a111b19">[email&#160;protected]</span></a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="pci-icon"><i class="icofont-clock-time"></i></div>
+                      <div class="pci-text">
+                        <strong>Response Time</strong>
+                        <span>Within 24 hours on business days</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>                  
+                  <div class="panel-socials">
+                    <a href="#" title="Facebook"><i class="icofont-facebook"></i></a>
+                    <a href="#" title="Twitter"><i class="icofont-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="icofont-linkedin"></i></a>
+                    <a href="#" title="Instagram"><i class="icofont-instagram"></i></a>
+                    <a href="#" title="YouTube"><i class="icofont-youtube-play"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right form -->
+            <div class="col-lg-7">
+              <div class="form-right-panel">
+                <div class="form-header">
+                  <span class="step-label">Send a message</span>
+                  <h2>How Can We Help?</h2>
+                  <p>Fill in the form below and the right team member will get back to you promptly.</p>
+                </div>
+               
+
+                <!-- Success message -->
+                <div class="success-msg" id="successMsg">
+                  <div class="msg-icon"><i class="icofont-check-circled"></i></div>
+                  <div>
+                    <strong>Message sent successfully!</strong>
+                    <span>Thank you for reaching out. We'll get back to you within 24 hours.</span>
+                  </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contactForm" class="contact-form" novalidate>
+                  <!-- Hidden topic field -->
+                  <input type="hidden" id="selectedTopic" value="General">
+
+                  <div class="row g-3">
+                    <!-- Full Name -->
+                    <div class="col-md-6">
+                      <label for="fullName" class="form-label">Full Name</label>
+                      <input type="text" class="form-control" id="fullName" placeholder="e.g. Emeka Okafor" required>
+                      <div class="invalid-feedback" id="nameError"></div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6">
+                      <label for="contactEmail" class="form-label">Email Address</label>
+                      <input type="email" class="form-control" id="contactEmail" placeholder="you@email.com" required>
+                      <div class="invalid-feedback" id="emailError"></div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6">
+                      <label for="contactPhone" class="form-label">Phone Number <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+                      <input type="tel" class="form-control" id="contactPhone" placeholder="+234 800 000 0000">
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="col-md-6">
+                      <label for="contactSubject" class="form-label">Subject</label>
+                      <input type="text" class="form-control" id="contactSubject" placeholder="Brief subject line" required>
+                      <div class="invalid-feedback" id="subjectError"></div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="col-12">
+                      <label for="contactMessage" class="form-label">Your Message</label>
+                      <textarea class="form-control" id="contactMessage" rows="5"
+                        placeholder="Tell us how we can help you..." required maxlength="1000"
+                        oninput="updateCharCount(this)"></textarea>
+                      <div class="char-counter" id="charCounter">0 / 1000</div>
+                      <div class="invalid-feedback" id="messageError"></div>
+                    </div>
+
+                    <!-- Consent checkbox -->
+                    <div class="col-12">
+                      <div class="form-check d-flex align-items-start gap-2">
+                        <input class="form-check-input flex-shrink-0 mt-1" type="checkbox" id="consentCheck" required>
+                        <label class="form-check-label" for="consentCheck" style="font-size:0.83rem;color:var(--text-body)">
+                          I agree to AfriDigital's <a href="#!" style="color:var(--primary);font-weight:600">Privacy Policy</a> and consent to being contacted regarding my enquiry.
+                        </label>
+                      </div>
+                      <div class="invalid-feedback d-block" id="consentError" style="font-size:0.77rem"></div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 d-flex align-items-center gap-3 flex-wrap">
+                    <button type="submit" class="btn-contact-submit">
+                      <i class="icofont-paper-plane"></i> Send Message
+                    </button>
+                    <span style="font-size:0.8rem;color:var(--text-muted)">
+                      <i class="icofont-shield" style="color:var(--accent)"></i> We never share your information
+                    </span>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FAQ STRIP ===== -->
+<section class="faq-strip">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-6 text-center">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <div class="divider mx-auto my-4"></div>
+          <p>Find quick answers to common questions. Can't find what you need? Use the form above.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="accordion faq-accordion" id="faqAccordion">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How do I access a course after enrolling?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Once enrolled, log in to your AfriDigital account and head to "My Learning" in the dashboard. All your courses will be listed there. You can access them on any device — mobile, tablet or desktop.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Can I get a refund if I'm not satisfied with a course?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! We offer a 30-day money-back guarantee on all paid courses. If you're not satisfied, contact us within 30 days of purchase and we'll process a full refund — no questions asked.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Are the certificates recognized by employers?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                AfriDigital certificates are designed in collaboration with leading African and global companies. They are widely recognized across the tech, business and creative industries. You can also share them directly on LinkedIn.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                How do I become an instructor on AfriDigital?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We're always looking for passionate experts to join our instructor community. Visit the "Become an Instructor" page or email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7e0a1b1f1d163e1f180c171a1719170a1f12501f180c171d1f">[email&#160;protected]</a> with your profile, area of expertise and a brief description of the course you'd like to create.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                Does AfriDigital offer corporate or group training?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes! We offer tailored corporate training packages for organizations looking to upskill their teams. Reach out via <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="53233221273d362120133235213a373a343a27323f7d3235213a3032">[email&#160;protected]</a> or select "Corporate Training" in the contact form above and we'll set up a consultation.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer style="background:var(--dark);padding:80px 0 0">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-sm-6">
+        <div class="mb-5 mb-lg-0">
+          <div class="mb-4 d-flex align-items-center gap-2">
+            <!-- <img src="images/logo.png" alt="" style="height:36px"> -->
+            <span style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)">Afri<em style="color:var(--primary);font-style:normal">Digital</em></span>
+          </div>
+          <p style="color:rgba(255,255,255,0.5);font-size:0.88rem;line-height:1.8">Africa's premier digital learning platform, developed by BDIC. Unlocking African potential through accessible, world-class education.</p>
+          <ul class="list-inline footer-socials mt-4">
+            <li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Courses</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <ul class="list-unstyled footer-menu">
+          <li><a href="#">Software Development</a></li>
+          <li><a href="#">Data Science & AI</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">Cybersecurity</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Company</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <ul class="list-unstyled footer-menu">
+          <li><a href="about.html">About AfriDigital</a></li>
+          <li><a href="#">BDIC Partnership</a></li>
+          <li><a href="appoinment.html">Become Instructor</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <h4 style="color:var(--white);font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Support</h4>
+        <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-3"></div>
+        <ul class="list-unstyled footer-menu">
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding:24px 0;margin-top:56px">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-6">
+          <span style="color:rgba(255,255,255,0.4);font-size:0.82rem">&copy; 2025 <strong>AfriDigital</strong> — Developed by <a href="#" style="color:var(--primary)">BDIC</a>. All rights reserved.</span>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <form class="d-flex gap-2 justify-content-lg-end">
+            <input type="email" class="form-control" placeholder="Newsletter"
+              style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:var(--white);max-width:220px">
+            <button type="submit" class="btn-main" style="padding:10px 18px;font-size:0.82rem;white-space:nowrap">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a class="backtop" href="#top"><i class="icofont-long-arrow-up"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AfriDigital shared scripts -->
+<script src="js/afridigital.js"></script>

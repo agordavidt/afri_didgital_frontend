@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>All Courses — AfriDigital</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Browse 1,500+ courses across tech, business, design and more on AfriDigital.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="BDIC">
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* PAGE HERO */
+    .page-title {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+      padding: 96px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-title::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(249,115,22,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .page-eyebrow {
+      display: inline-block;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+    .page-title h1 {
+      color: var(--white);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .page-title p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .breadcrumb-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+    .breadcrumb-nav li { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+    .breadcrumb-nav li a { color: rgba(255,255,255,0.65); text-decoration: none; transition: var(--transition); }
+    .breadcrumb-nav li a:hover { color: var(--primary); }
+    .breadcrumb-nav li.active { color: var(--primary); }
+
+    /* TOOLBAR */
+    .courses-toolbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-mid);
+      padding: 16px 0;
+      position: sticky;
+      top: 70px;
+      z-index: 50;
+      box-shadow: 0 2px 12px rgba(15,23,42,0.06);
+    }
+    .toolbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      padding: 7px 18px;
+      border-radius: 30px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.79rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1.5px solid var(--gray-mid);
+      color: var(--text-body);
+      background: var(--white);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .filter-pill:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(249,115,22,0.28);
+    }
+    .toolbar-right { display: flex; align-items: center; gap: 12px; }
+    .result-count { font-size: 0.83rem; color: var(--text-muted); font-family: var(--font-display); white-space: nowrap; }
+    .result-count strong { color: var(--dark); }
+    .sort-select {
+      border: 1.5px solid var(--gray-mid);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      color: var(--dark);
+      background: var(--white);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .sort-select:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(249,115,22,0.1); }
+
+    /* COURSES GRID */
+    .courses-section { padding: 60px 0 100px; background: var(--gray-soft); }
+
+    .course-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--gray-mid);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                  box-shadow 0.35s cubic-bezier(0.4,0,0.2,1),
+                  border-color 0.25s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(15,23,42,0.14);
+      border-color: transparent;
+    }
+
+    /* Thumbnail */
+    .card-thumb {
+      position: relative;
+      overflow: hidden;
+      height: 195px;
+      flex-shrink: 0;
+    }
+    .card-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .course-card:hover .card-thumb img { transform: scale(1.08); }
+
+    .badge-tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      font-family: var(--font-display);
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .badge-tag.bestseller { background: var(--primary); color: var(--white); }
+    .badge-tag.new-course { background: var(--accent); color: var(--white); }
+    .badge-tag.popular    { background: #8B5CF6; color: var(--white); }
+    .badge-tag.free-badge { background: var(--dark); color: var(--white); }
+
+    .btn-wishlist {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 34px; height: 34px;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(-5px);
+      z-index: 3;
+    }
+    .course-card:hover .btn-wishlist { opacity: 1; transform: translateY(0); }
+    .btn-wishlist:hover { background: var(--white); color: #EF4444; }
+    .btn-wishlist.wished { opacity: 1; color: #EF4444; transform: translateY(0); }
+
+    .overlay-play {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,23,42,0.45);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+    .course-card:hover .overlay-play { opacity: 1; }
+    .play-icon {
+      width: 52px; height: 52px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 1.3rem;
+      text-decoration: none;
+      transform: scale(0.8);
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .course-card:hover .play-icon { transform: scale(1); }
+
+    /* Card body */
+    .card-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-category {
+      font-size: 0.71rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: var(--font-display);
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-size: 0.97rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.45;
+      margin-bottom: 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-instructor {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .card-instructor img {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .card-rating {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+      font-size: 0.79rem;
+    }
+    .stars { color: #F59E0B; font-size: 0.74rem; letter-spacing: 1px; }
+    .rating-num { font-weight: 700; color: var(--dark); font-family: var(--font-display); }
+    .rating-count { color: var(--text-muted); }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .meta-pill {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      background: var(--gray-soft);
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .meta-pill i { font-size: 0.7rem; }
+
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--gray-mid);
+      margin-top: auto;
+    }
+    .current-price {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+    .original-price {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      display: block;
+    }
+    .free-price { color: var(--accent) !important; }
+
+    .btn-enroll-sm {
+      padding: 8px 18px;
+      background: var(--secondary);
+      color: var(--white);
+      border-radius: 20px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.78rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .btn-enroll-sm:hover {
+      background: var(--primary);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(249,115,22,0.3);
+    }
+
+    /* Load more */
+    .load-more-wrap { text-align: center; padding-top: 52px; }
+    .btn-load-more {
+      padding: 14px 42px;
+      border: 2px solid var(--gray-mid);
+      background: var(--white);
+      color: var(--dark);
+      border-radius: 40px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-load-more:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Promo strip */
+    .promo-strip {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 52px 0;
+    }
+    .promo-strip h3 { color: var(--white); font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .promo-strip p { color: rgba(255,255,255,0.78); font-size: 0.95rem; margin-bottom: 0; }
+    .btn-promo {
+      padding: 14px 32px;
+      background: var(--white);
+      color: var(--primary);
+      border-radius: 40px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-promo:hover { background: var(--dark); color: var(--white); transform: translateY(-2px); }
+
+    /* Fade-in animation for filtered items */
+    .course-item { animation: fadeUp 0.4s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 767px) {
+      .courses-toolbar { top: 0; position: relative; }
+      .toolbar-inner { flex-direction: column; align-items: flex-start; }
+      .toolbar-left { overflow-x: auto; padding-bottom: 4px; flex-wrap: nowrap; width: 100%; }
+      .toolbar-right { width: 100%; justify-content: space-between; }
+    }
+  </style>
+
+
+
+
+  <style id="nav-css">
+    /* =====================================================
+       NAVIGATION — Command Bar (all pages)
+    ===================================================== */
+    #mainNav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      padding: 14px 0;
+      transition: padding 0.4s ease;
+    }
+    /* Light-theme pages: always solid */
+    #mainNav.nav-page .nav-bar {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(15,23,42,0.1);
+      box-shadow: 0 4px 24px rgba(15,23,42,0.07);
+    }
+    #mainNav.nav-page.scrolled .nav-bar {
+      box-shadow: 0 8px 40px rgba(15,23,42,0.12);
+    }
+    /* Dark-theme pages: transparent → frosted on scroll */
+    #mainNav.nav-dark .nav-bar {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.12);
+    }
+    #mainNav.nav-dark.nav-solid .nav-bar {
+      background: rgba(10,18,35,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .nav-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 8px 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+    }
+    .nav-bar::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 20%; right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.5), transparent);
+      border-radius: 1px;
+    }
+    /* Logo */
+    .n-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-dark .n-logo { color: #fff; }
+    .nav-dark .n-logo em { color: var(--primary); font-style: normal; }
+    .nav-page .n-logo { color: var(--secondary); }
+    .nav-page .n-logo em { color: var(--primary); font-style: normal; }
+    /* Centre links */
+    .n-center {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .n-link {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      letter-spacing: 0.3px;
+      position: relative;
+    }
+    .nav-dark .n-link { color: rgba(255,255,255,0.55); }
+    .nav-dark .n-link:hover { color: #fff; }
+    .nav-dark .n-link.active { color: #fff; }
+    .nav-dark .n-link.catalogue { color: var(--primary); }
+    .nav-dark .n-link.catalogue:hover { background: rgba(249,115,22,0.1); color: #fff; }
+    .nav-page .n-link { color: rgba(15,23,42,0.5); }
+    .nav-page .n-link:hover { color: var(--dark); background: rgba(15,23,42,0.05); }
+    .nav-page .n-link.active { color: var(--secondary); font-weight: 700; }
+    .nav-page .n-link.catalogue { color: var(--primary); }
+    .nav-page .n-link.catalogue:hover { background: rgba(249,115,22,0.08); color: var(--primary-dark); }
+    /* Active dot */
+    .n-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 50%; transform: translateX(-50%);
+      width: 4px; height: 4px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    /* Separator */
+    .n-sep { width: 1px; height: 14px; flex-shrink: 0; }
+    .nav-dark .n-sep { background: rgba(255,255,255,0.15); }
+    .nav-page .n-sep { background: rgba(15,23,42,0.1); }
+    /* Right auth */
+    .n-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .n-signin {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 7px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-dark .n-signin { color: rgba(255,255,255,0.6); }
+    .nav-dark .n-signin:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-page .n-signin { color: var(--text-body); }
+    .nav-page .n-signin:hover { color: var(--dark); background: rgba(15,23,42,0.06); }
+    .n-start {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: #fff;
+      background: var(--primary);
+      padding: 8px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .n-start:hover { color: #fff; background: #C2410C; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(249,115,22,0.4); }
+    /* Hamburger */
+    .n-hamburger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .n-hamburger span { display: block; width: 20px; height: 2px; border-radius: 2px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
+    .nav-dark .n-hamburger span { background: rgba(255,255,255,0.8); }
+    .nav-page .n-hamburger span { background: var(--dark); }
+    .n-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .n-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .n-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    /* Mobile drawer */
+    .n-mobile {
+      display: none;
+      position: fixed;
+      top: 80px; left: 12px; right: 12px;
+      background: rgba(10,18,35,0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 20px 20px;
+      z-index: 899;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .n-mobile.open { display: block; animation: mobileSlide 0.28s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes mobileSlide {
+      from { opacity:0; transform: translateY(-12px) scale(0.97); }
+      to   { opacity:1; transform: translateY(0) scale(1); }
+    }
+    .n-mobile a {
+      display: block; padding: 11px 4px;
+      font-family: var(--font-display); font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .n-mobile a:last-child { border-bottom: none; }
+    .n-mobile a:hover { color: var(--primary); padding-left: 8px; }
+    .n-mobile-cta {
+      display: block !important; margin-top: 14px;
+      background: var(--primary) !important; color: #fff !important;
+      text-align: center; padding: 12px !important;
+      border-radius: 10px; border: none !important; font-weight: 700 !important;
+    }
+    .n-mobile-cta:hover { background: #C2410C !important; }
+    .nav-wrap { padding: 0 20px; }
+    @media (max-width: 900px) {
+      .n-center, .n-signin { display: none; }
+      .n-hamburger { display: flex; }
+      .nav-bar { padding: 0 10px 0 16px; }
+    }
+  </style>
+</head>
+
+<body id="top">
+<nav id="mainNav" class="nav-page">
+  <div class="nav-wrap">
+    <div class="nav-bar">
+      <a href="index.html" class="n-logo">Afri<em>Digital</em></a>
+
+      <div class="n-center">
+        <a href="index.html" class="n-link">Home</a>
+        <span class="n-sep"></span>
+        <a href="courses.html" class="n-link catalogue active">Catalogue</a>
+        <span class="n-sep"></span>
+        <a href="contact.html" class="n-link">Talk to Us</a>
+      </div>
+
+      <div class="n-right">
+        <a href="login.html" class="n-signin">Sign In</a>
+        <a href="register.html" class="n-start">Get Started</a>
+      </div>
+
+      <button class="n-hamburger" id="navBurger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="n-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="courses.html" style="color:var(--primary)">Catalogue</a>
+    <a href="contact.html">Talk to Us</a>
+    <a href="login.html">Sign In</a>
+    <a href="register.html" class="n-mobile-cta">Get Started Free</a>
+  </div>
+</nav>
+
+
+
+
+
+<!-- ===== HEADER ===== -->
+
+
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-title">
+  <div class="container text-center">
+    <span class="page-eyebrow">1,500+ Courses Available</span>
+    <h1>Explore All Courses</h1>
+    <p>Build in-demand digital skills taught by Africa's top instructors. Learn at your own pace and earn industry-recognized certificates.</p>
+    <ul class="breadcrumb-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><i class="icofont-thin-right" style="font-size:0.65rem"></i></li>
+      <li class="active">All Courses</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ===== COURSES TOOLBAR ===== -->
+<div class="courses-toolbar">
+  <div class="container">
+    <div class="toolbar-inner">
+      <div class="toolbar-left" id="filterPills">
+        <span class="filter-pill active" data-filter="all">All Courses</span>
+        <span class="filter-pill" data-filter="dev">Software Dev</span>
+        <span class="filter-pill" data-filter="data">Data Science</span>
+        <span class="filter-pill" data-filter="design">UI/UX Design</span>
+        <span class="filter-pill" data-filter="cyber">Cybersecurity</span>
+        <span class="filter-pill" data-filter="marketing">Digital Marketing</span>
+        <span class="filter-pill" data-filter="business">Business</span>
+      </div>
+      <div class="toolbar-right">
+        <span class="result-count"><strong id="courseCount">9</strong> courses</span>
+        <select class="sort-select" id="sortSelect">
+          <option value="popular">Most Popular</option>
+          <option value="newest">Newest First</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== COURSES GRID ===== -->
+<section class="courses-section">
+  <div class="container">
+    <div class="row g-4" id="coursesGrid">
+
+      <!-- Card 1 — Full Stack Dev -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="dev">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-1.jpg" alt="Full-Stack Web Development">
+            <button class="btn-wishlist" aria-label="Wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Software Dev</div>
+            <h3 class="card-title">Full-Stack Web Development Bootcamp 2024</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 42 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 187 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 8.2K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="original-price">₦35,000</span>
+                <span class="current-price">₦19,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 — Data Science -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="data">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-2.jpg" alt="Data Science">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Data Science</div>
+            <h3 class="card-title">Data Science & Machine Learning with Python</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 56 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 224 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 5.7K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="original-price">₦45,000</span>
+                <span class="current-price">₦24,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — UI/UX -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="design">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-3.jpg" alt="UI/UX Design">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">UI/UX Design</div>
+            <h3 class="card-title">UI/UX Design Masterclass: From Zero to Pro</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 38 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 156 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 11.4K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="current-price">₦17,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 — Cyber -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="cyber">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-4.jpg" alt="Cybersecurity">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Cybersecurity</div>
+            <h3 class="card-title">Ethical Hacking & Cybersecurity Complete Course</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 48 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 198 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 3.1K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="original-price">₦40,000</span>
+                <span class="current-price">₦22,499</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 — Marketing -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="marketing">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-6.jpg" alt="Digital Marketing">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Digital Marketing</div>
+            <h3 class="card-title">Digital Marketing & Social Media Strategy 2024</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 28 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 112 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 6.9K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="current-price">₦14,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 — Business -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="business">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-8.jpg" alt="Business">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Business</div>
+            <h3 class="card-title">African Entrepreneurship: Build & Scale Your Business</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 24 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 94 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 2.4K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="original-price">₦30,000</span>
+                <span class="current-price">₦12,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 — React / Free -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="dev">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-1.jpg" alt="React">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Software Dev</div>
+            <h3 class="card-title">React & Next.js: Build Production-Grade Applications</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 35 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 142 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 4.5K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="current-price">₦17,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 — SQL -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="data">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-2.jpg" alt="SQL">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">Data Science</div>
+            <h3 class="card-title">SQL & Database Design: Beginner to Advanced</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 20 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 88 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 3.3K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="original-price">₦25,000</span>
+                <span class="current-price">₦11,999</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 9 — Figma -->
+      <div class="col-xl-3 col-lg-4 col-md-6 course-item" data-category="design">
+        <div class="course-card">
+          <div class="card-thumb">
+            <img src="images/course/course-3.jpg" alt="Figma">
+            <button class="btn-wishlist"><i class="icofont-heart-alt"></i></button>
+            <div class="overlay-play">
+              <a href="department-single.html" class="play-icon"><i class="icofont-play-alt-2"></i></a>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-category">UI/UX Design</div>
+            <h3 class="card-title">Figma Advanced: Prototyping, Components & Design Systems</h3>
+            <div class="card-meta">
+              <span class="meta-pill"><i class="icofont-clock-time"></i> 18 hrs</span>
+              <span class="meta-pill"><i class="icofont-book-alt"></i> 74 lessons</span>
+              <span class="meta-pill"><i class="icofont-users-alt-5"></i> 1.8K</span>
+            </div>
+            <div class="card-footer-row">
+              <div>
+                <span class="current-price">₦16,499</span>
+              </div>
+              <a href="department-single.html" class="btn-enroll-sm">Enroll Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="load-more-wrap">
+      <button class="btn-load-more"><i class="icofont-refresh"></i> Load More Courses</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== PROMO STRIP ===== -->
+<section class="promo-strip">
+  <div class="container">
+    <div class="row align-items-center justify-content-between g-4">
+      <div class="col-lg-7">
+        <h3>Can't find what you're looking for?</h3>
+        <p>Tell us what skill you want to learn and our team will notify you when the course launches.</p>
+      </div>
+      <div class="col-lg-auto">
+        <a href="contact.html" class="btn-promo">Request a Course</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" style="background:var(--dark);padding:80px 0 0">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-sm-6">
+        <div class="widget mb-5 mb-lg-0">
+          <div class="mb-4 d-flex align-items-center gap-2">
+            <img src="images/logo.png" alt="" style="height:36px">
+            <span style="font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--white)">Afri<em style="color:var(--primary);font-style:normal">Digital</em></span>
+          </div>
+          <p style="color:rgba(255,255,255,0.5);font-size:0.9rem;line-height:1.8">Africa's premier digital learning platform, developed by BDIC.</p>
+          <ul class="list-inline footer-socials mt-4">
+            <li class="list-inline-item"><a href="#"><i class="icofont-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-linkedin"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="icofont-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <div class="widget mb-5 mb-lg-0">
+          <h4 style="color:var(--white);font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Courses</h4>
+          <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-4"></div>
+          <ul class="list-unstyled footer-menu">
+            <li><a href="#">Software Development</a></li>
+            <li><a href="#">Data Science & AI</a></li>
+            <li><a href="#">UI/UX Design</a></li>
+            <li><a href="#">Cybersecurity</a></li>
+            <li><a href="#">Digital Marketing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 col-sm-6">
+        <div class="widget mb-5 mb-lg-0">
+          <h4 style="color:var(--white);font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Company</h4>
+          <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-4"></div>
+          <ul class="list-unstyled footer-menu">
+            <li><a href="about.html">About AfriDigital</a></li>
+            <li><a href="#">BDIC Partnership</a></li>
+            <li><a href="appoinment.html">Become Instructor</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="widget mb-5 mb-lg-0">
+          <h4 style="color:var(--white);font-size:0.88rem;font-weight:700;text-transform:uppercase;letter-spacing:1px" class="mb-3">Get in Touch</h4>
+          <div style="height:2px;background:rgba(255,255,255,0.08);width:36px" class="mb-4"></div>
+          <div class="mb-3">
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <i class="icofont-email" style="color:var(--primary)"></i>
+              <span style="color:rgba(255,255,255,0.45);font-size:0.8rem">Support 24/7</span>
+            </div>
+            <a href="/cdn-cgi/l/email-protection#2149444d4d4e61404753484548464855404d0f404753484240" style="color:var(--white);font-family:var(--font-display);font-weight:600;font-size:0.9rem;text-decoration:none"><span class="__cf_email__" data-cfemail="ef878a838380af8e899d868b8688869b8e83c18e899d868c8e">[email&#160;protected]</span></a>
+          </div>
+          <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <i class="icofont-support" style="color:var(--primary)"></i>
+              <span style="color:rgba(255,255,255,0.45);font-size:0.8rem">Mon–Fri: 08:00–20:00</span>
+            </div>
+            <a href="tel:+234-800-AFRIDIG" style="color:var(--white);font-family:var(--font-display);font-weight:600;font-size:0.9rem;text-decoration:none">+234-800-AFRIDIG</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding:28px 0;margin-top:60px">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-6">
+          <span style="color:rgba(255,255,255,0.4);font-size:0.83rem">&copy; 2025 <strong>AfriDigital</strong> — Developed by <a href="#" style="color:var(--primary)">BDIC</a>. All rights reserved.</span>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+          <div class="text-lg-end">
+            <form class="d-flex gap-2 justify-content-lg-end">
+              <input type="email" class="form-control" placeholder="Subscribe to newsletter" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12);color:var(--white);max-width:260px">
+              <button type="submit" class="btn-main" style="padding:10px 20px;white-space:nowrap;font-size:0.83rem">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3">
+        <a class="backtop" href="#top"><i class="icofont-long-arrow-up"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AfriDigital shared scripts -->
+<script src="js/afridigital.js"></script>

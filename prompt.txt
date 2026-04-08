@@ -1,0 +1,14 @@
+
+
+
+Great! you have done incredibly well, if you observe the navigation has changed with the other pages from what it was in the first page. i.e. the index.html page (all the dropdowns have been removed).
+
+The web platform has basically a landing page, courses page, a course detail page and a contact page. There is also a register and login page. some we are going to make some adjustments
+
+* This is a learning platform, i do not need blogs, about, instrucotrs/mentors pages and so on. I want you to be very creative with the navigation to take just landing page, courses, contact (in a creative way, you could change the names or come up with a presentable way to have it see reference from other platforms, udemy, coursera, skillup and so on). you can try to blend several ideas to be original, but let's have a navigation that works for this.
+
+* Each section should be a viewport height, that a section should not have too much height that a user needs to scroll to see all it's conents, all contents of a section should be visisble on a viewport .  example the home hero section takes up to much height adn i need to scroll down to see all the sections content.
+
+* I would love some more animation on the homepage, no too much but a little active instead of the currently full static view. (you have to be very creative about this, very very creative).
+
+* no icons on button, maintain the fonts and colors as well.
